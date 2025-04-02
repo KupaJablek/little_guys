@@ -1,0 +1,59 @@
+extends PanelContainer
+class_name Action
+
+
+@export var action_name: String
+@export var time: float
+@export var objectives: Array[Type]
+
+
+enum Type {
+	BRAIN,
+	HEART,
+	LUNGS
+}
+const TYPE_MAPPING: Dictionary = {
+	Type.BRAIN: preload("res://icon.svg"),
+	Type.HEART: preload("res://icon.svg"),
+	Type.LUNGS: preload("res://icon.svg")
+}
+const ACTION_COMPONENT = preload("res://ui/action/action_component.tscn")
+
+@onready var action_label: Label = $Name
+@onready var objective_container: HBoxContainer = $Objectives
+@onready var time_remaining: ProgressBar = $TimeRemaining
+@onready var timer: Timer = $Timer
+
+var objective_list: Dictionary = {} #Type: Array[Control]
+
+
+func _ready() -> void:
+	action_label.text = action_name
+	for objective in objectives:
+		var action_component_instance: ActionComponent = ACTION_COMPONENT.instantiate()
+		action_component_instance.texture = TYPE_MAPPING[objective]
+		if objective not in objective_list:
+			objective_list[objective] = []
+		objective_list[objective].append(action_component_instance)
+		objective_container.add_child(action_component_instance)
+	timer.wait_time = time
+	timer.start()
+
+
+func _process(_delta: float) -> void:
+	time_remaining.value = (timer.time_left / timer.wait_time) * 100.0
+
+
+func _on_timer_timeout() -> void:
+	queue_free()
+
+
+func handle_objective_completion(objective: Type) -> bool: #Return wether the objective was handled or not
+	if not objective in objective_list:
+		return false
+	var components: Array = objective_list[objective]
+	for component in components:
+		if not component.completed:
+			component.completed = true
+			return true
+	return false
