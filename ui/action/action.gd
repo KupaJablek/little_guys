@@ -7,6 +7,9 @@ class_name Action
 @export var objectives: Array[Type]
 
 
+signal completed
+
+
 enum Type {
 	BRAIN,
 	HEART,
@@ -25,6 +28,11 @@ const ACTION_COMPONENT = preload("res://ui/action/action_component.tscn")
 @onready var timer: Timer = $Timer
 
 var objective_list: Dictionary = {} #Type: Array[Control]
+var completed_count: int = 0:
+	set(value):
+		completed_count = value
+		if completed_count == len(objectives):
+			completed.emit()
 
 
 func _ready() -> void:
@@ -55,5 +63,6 @@ func handle_objective_completion(objective: Type) -> bool: #Return wether the ob
 	for component in components:
 		if not component.completed:
 			component.completed = true
+			completed_count += 1
 			return true
 	return false
