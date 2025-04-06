@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://5dxil5xugwwg"]
+
+[ext_resource type="Texture2D" uid="uid://drq0mty41qi1m" path="res://resources/Lungs/lungs_tileset.png" id="1_a3ejv"]
+[ext_resource type="Script" uid="uid://m6u8b2b8wq3r" path="res://entities/player/platformer_player.gd" id="1_ih0xr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih0xr"]
+atlas = ExtResource("1_a3ejv")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hb8s"]
+atlas = ExtResource("1_a3ejv")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoh4m"]
+atlas = ExtResource("1_a3ejv")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75eoh"]
+atlas = ExtResource("1_a3ejv")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxk4b"]
+atlas = ExtResource("1_a3ejv")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opc4u"]
+atlas = ExtResource("1_a3ejv")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5s3c"]
+atlas = ExtResource("1_a3ejv")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75eoh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih0xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hb8s")
+}],
+"loop": true,
+"name": &"climbing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoh4m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75eoh")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxk4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opc4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5s3c")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ccfb"]
+radius = 8.0
+height = 16.0
+
+[node name="platformer_player" type="CharacterBody2D"]
+script = ExtResource("1_ih0xr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_75eoh")
+animation = &"falling"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8ccfb")
