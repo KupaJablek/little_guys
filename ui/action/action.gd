@@ -16,9 +16,9 @@ enum Type {
 	LUNGS
 }
 const TYPE_MAPPING: Dictionary = {
-	Type.BRAIN: preload("res://icon.svg"),
-	Type.HEART: preload("res://icon.svg"),
-	Type.LUNGS: preload("res://icon.svg")
+	Type.BRAIN: preload("res://resources/body_overview/brain_indicator.png"),
+	Type.HEART: preload("res://resources/body_overview/heart_indicator.png"),
+	Type.LUNGS: preload("res://resources/body_overview/lungs_indicator.png")
 }
 const ACTION_COMPONENT = preload("res://ui/action/action_component.tscn")
 

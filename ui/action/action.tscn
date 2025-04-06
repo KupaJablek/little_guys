@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgt8vmbjpr0uk"]
+[gd_scene load_steps=6 format=3 uid="uid://dgt8vmbjpr0uk"]
 
 [ext_resource type="Script" uid="uid://cb4ubdko3jj74" path="res://ui/action/action.gd" id="1_joly6"]
+[ext_resource type="FontFile" uid="uid://bm6q87o23fb2x" path="res://resources/font/arcadeclassic.regular.ttf" id="2_fl4qp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj2i6"]
 bg_color = Color(0.709828, 0.959779, 0.994474, 1)
@@ -8,7 +9,7 @@ border_width_left = 15
 border_width_top = 15
 border_width_right = 15
 border_width_bottom = 15
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.115908, 0.791978, 0.864986, 1)
 border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -30,24 +31,22 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="Action" type="PanelContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -972.0
-offset_bottom = -527.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(150, 125)
+offset_right = 61.0
+offset_bottom = 70.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yj2i6")
 script = ExtResource("1_joly6")
 action_name = "Run"
 time = 30.0
-objectives = Array[int]([0, 1, 0])
+objectives = Array[int]([0, 1, 2])
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Run"
+theme_override_fonts/font = ExtResource("2_fl4qp")
+theme_override_font_sizes/font_size = 20
+text = "Breathe"
 
 [node name="Objectives" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)
