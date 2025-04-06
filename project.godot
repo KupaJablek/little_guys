@@ -12,11 +12,13 @@ config_version=5
 
 config/name="LittleGuys"
 run/main_scene="res://ui/main_menu/main_menu.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=960
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
 [input]
