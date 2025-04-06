@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7l5l81klp00s"]
+[gd_scene load_steps=5 format=3 uid="uid://b7l5l81klp00s"]
 
 [ext_resource type="Script" uid="uid://b0tlyb7lk1mxk" path="res://ui/main_menu/main_menu.gd" id="1_3fvnl"]
 [ext_resource type="Texture2D" uid="uid://b058up1ew56pe" path="res://resources/UI/title_screen.png" id="1_sy8v2"]
-[ext_resource type="Script" uid="uid://dgn4sd5sf30oe" path="res://ui/main_menu/exit_button.gd" id="3_omy8q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mu8pm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_omy8q"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -30,8 +33,11 @@ offset_left = 287.0
 offset_top = 336.0
 offset_right = 671.0
 offset_bottom = 384.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.896695, 0.817237, 0.00609797, 1)
 theme_override_colors/font_color = Color(0.984314, 0.898039, 0.0392157, 1)
 theme_override_font_sizes/font_size = 29
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mu8pm")
 action_mode = 0
 text = "Start Game"
 flat = true
@@ -43,8 +49,11 @@ offset_left = 287.0
 offset_top = 432.0
 offset_right = 671.0
 offset_bottom = 480.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.242472, 0.285814, 0.792767, 1)
 theme_override_colors/font_color = Color(0.330204, 0.401329, 0.903941, 1)
 theme_override_font_sizes/font_size = 29
+theme_override_styles/focus = SubResource("StyleBoxEmpty_omy8q")
 action_mode = 0
 text = "Settings"
 flat = true
@@ -56,12 +65,13 @@ offset_left = 287.0
 offset_top = 528.0
 offset_right = 671.0
 offset_bottom = 576.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.574014, 0.118778, 0.692923, 1)
 theme_override_colors/font_color = Color(0.739177, 0.248432, 0.875023, 1)
 theme_override_font_sizes/font_size = 29
 action_mode = 0
 text = "Exit"
 flat = true
-script = ExtResource("3_omy8q")
 
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="settings_button" to="." method="_on_settings_button_pressed"]
