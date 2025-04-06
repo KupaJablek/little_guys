@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://c76ti3otswpug"]
+
+[ext_resource type="Texture2D" uid="uid://4jakgcewot30" path="res://resources/body_overview/background.png" id="1_7r77e"]
+[ext_resource type="Texture2D" uid="uid://cucsul5y2wlak" path="res://resources/body_overview/brain_monitor.png" id="2_tvica"]
+[ext_resource type="Texture2D" uid="uid://qq2b5o05ff3o" path="res://resources/body_overview/lung_monitor.png" id="3_8rhty"]
+[ext_resource type="Texture2D" uid="uid://bnt4sh7h5prvn" path="res://resources/body_overview/heart_monitor.png" id="4_3s1xt"]
+[ext_resource type="Texture2D" uid="uid://1o4guj6eh7xp" path="res://resources/body_overview/big_guy.png" id="5_nnyly"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 720.0
+texture = ExtResource("1_7r77e")
+
+[node name="brain_monitor" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 392.0
+offset_bottom = 317.0
+texture = ExtResource("2_tvica")
+
+[node name="heart_monitor" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 26.0
+offset_top = 429.0
+offset_right = 395.0
+offset_bottom = 686.0
+texture = ExtResource("3_8rhty")
+
+[node name="lung_monitor" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = 504.0
+offset_top = 58.0
+offset_right = 863.0
+offset_bottom = 337.0
+texture = ExtResource("4_3s1xt")
+
+[node name="big_guy" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 655.0
+offset_top = 412.0
+offset_right = 867.0
+offset_bottom = 702.0
+texture = ExtResource("5_nnyly")
