@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4clnwfxiffbj"
-path="res://.godot/imported/lungs_indicator.png-54821de443a038112c87e6c29708ae99.ctex"
+uid="uid://cck4b5syc75ny"
+path="res://.godot/imported/button_white.png-bc80a5c930ab8d6fa6e8cdcce2830bc9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/body_overview/lungs_indicator.png"
-dest_files=["res://.godot/imported/lungs_indicator.png-54821de443a038112c87e6c29708ae99.ctex"]
+source_file="res://resources/UI/button_white.png"
+dest_files=["res://.godot/imported/button_white.png-bc80a5c930ab8d6fa6e8cdcce2830bc9.ctex"]
 
 [params]
 
