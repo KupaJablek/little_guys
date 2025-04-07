@@ -8,7 +8,7 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	# get_tree().change_scene_to_file("res://iu/settings_menu.tscn")
+	get_tree().change_scene_to_file("res://ui/settings_menu/settings_menu.tscn")
 	print("Settings pressed")
 
 
