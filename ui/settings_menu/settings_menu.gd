@@ -32,15 +32,25 @@ func _on_back_button_pressed() -> void:
 
 func _on_decrease_volume_focus_entered() -> void:
 	$DecreaseVolume.icon = dec_highlighted
-
-
 func _on_decrease_volume_mouse_entered() -> void:
 	$DecreaseVolume.icon = dec_highlighted
 
-
 func _on_decrease_volume_mouse_exited() -> void:
 	$DecreaseVolume.icon = dec
-
-
 func _on_decrease_volume_focus_exited() -> void:
 	$DecreaseVolume.icon = dec
+
+
+func _on_increase_volume_focus_entered() -> void:
+	$IncreaseVolume.icon = inc_highlighted
+func _on_increase_volume_mouse_entered() -> void:
+	$IncreaseVolume.icon = inc_highlighted
+
+func _on_increase_volume_mouse_exited() -> void:
+	$IncreaseVolume.icon = inc
+func _on_increase_volume_focus_exited() -> void:
+	$IncreaseVolume.icon = inc
+
+
+func _on_increase_volume_pressed() -> void:
+	pass # Replace with function body.

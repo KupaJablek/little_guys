@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi6irt0cqtmy4"]
+[gd_scene load_steps=10 format=3 uid="uid://bi6irt0cqtmy4"]
 
 [ext_resource type="Script" uid="uid://23o8t4fjwiwo" path="res://ui/settings_menu/settings_menu.gd" id="1_kvsec"]
 [ext_resource type="Texture2D" uid="uid://d3dfun1kh6yvk" path="res://resources/UI/Settings_menu/setting_bar_container.png" id="2_2adas"]
 [ext_resource type="Texture2D" uid="uid://bcdrulroyri3i" path="res://resources/UI/Settings_menu/bg.png" id="2_gjkyi"]
+[ext_resource type="Texture2D" uid="uid://en1blgc8bbfr" path="res://resources/UI/Settings_menu/setting_bar_counter.png" id="4_rnc5y"]
 [ext_resource type="Texture2D" uid="uid://dyh80ge2poqfy" path="res://resources/UI/Settings_menu/settings_down_btn.png" id="4_tl6ag"]
 [ext_resource type="Texture2D" uid="uid://lxdyucdgik6u" path="res://resources/UI/Settings_menu/settings_up_btn.png" id="5_rnc5y"]
+[ext_resource type="Texture2D" uid="uid://b4de131mo5s64" path="res://resources/UI/Settings_menu/back_button.png" id="6_58eej"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8urx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjkyi"]
 
 [node name="SettingsMenu" type="Control"]
 texture_filter = 1
@@ -29,29 +35,56 @@ layout_mode = 0
 offset_left = 332.0
 offset_top = 304.0
 offset_right = 428.0
-offset_bottom = 344.0
+offset_bottom = 336.0
 scale = Vector2(3, 3)
 texture = ExtResource("2_2adas")
+
+[node name="Counter" type="TextureRect" parent="VolumeBar"]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.33334
+offset_right = 11.0
+offset_bottom = 27.3333
+texture = ExtResource("4_rnc5y")
 
 [node name="DecreaseVolume" type="Button" parent="."]
 layout_mode = 0
 offset_left = 236.0
-offset_top = 320.0
+offset_top = 304.0
 offset_right = 260.0
-offset_bottom = 344.0
+offset_bottom = 328.0
 scale = Vector2(4, 4)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p8urx")
 icon = ExtResource("4_tl6ag")
+flat = true
 
 [node name="IncreaseVolume" type="Button" parent="."]
 layout_mode = 0
 offset_left = 620.0
-offset_top = 320.0
+offset_top = 304.0
 offset_right = 644.0
-offset_bottom = 344.0
+offset_bottom = 328.0
 scale = Vector2(4, 4)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gjkyi")
 icon = ExtResource("5_rnc5y")
+flat = true
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 624.0
+offset_right = 24.0
+offset_bottom = 648.0
+scale = Vector2(4, 4)
+icon = ExtResource("6_58eej")
+flat = true
 
 [connection signal="focus_entered" from="DecreaseVolume" to="." method="_on_decrease_volume_focus_entered"]
 [connection signal="focus_exited" from="DecreaseVolume" to="." method="_on_decrease_volume_focus_exited"]
 [connection signal="mouse_entered" from="DecreaseVolume" to="." method="_on_decrease_volume_mouse_entered"]
 [connection signal="mouse_exited" from="DecreaseVolume" to="." method="_on_decrease_volume_mouse_exited"]
+[connection signal="focus_entered" from="IncreaseVolume" to="." method="_on_increase_volume_focus_entered"]
+[connection signal="focus_exited" from="IncreaseVolume" to="." method="_on_increase_volume_focus_exited"]
+[connection signal="mouse_entered" from="IncreaseVolume" to="." method="_on_increase_volume_mouse_entered"]
+[connection signal="mouse_exited" from="IncreaseVolume" to="." method="_on_increase_volume_mouse_exited"]
+[connection signal="pressed" from="IncreaseVolume" to="." method="_on_increase_volume_pressed"]
