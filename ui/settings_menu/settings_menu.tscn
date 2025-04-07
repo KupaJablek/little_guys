@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bi6irt0cqtmy4"]
+[gd_scene load_steps=11 format=3 uid="uid://bi6irt0cqtmy4"]
 
 [ext_resource type="Script" uid="uid://23o8t4fjwiwo" path="res://ui/settings_menu/settings_menu.gd" id="1_kvsec"]
 [ext_resource type="Texture2D" uid="uid://d3dfun1kh6yvk" path="res://resources/UI/Settings_menu/setting_bar_container.png" id="2_2adas"]
@@ -11,6 +11,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8urx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjkyi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tl6ag"]
 
 [node name="SettingsMenu" type="Control"]
 texture_filter = 1
@@ -76,6 +78,7 @@ offset_top = 624.0
 offset_right = 24.0
 offset_bottom = 648.0
 scale = Vector2(4, 4)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tl6ag")
 icon = ExtResource("6_58eej")
 flat = true
 
