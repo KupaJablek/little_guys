@@ -4,13 +4,14 @@ class_name Maze
 
 
 @export var size: Vector2i #Must be ODD number
-@export var wall_id: Vector2i
-@export var path_id: Vector2i
-@export var position_id: Vector2i
+#@export var wall_id: Vector2i
+#@export var path_id: Vector2i
+#@export var position_id: Vector2i
 
 var start: Vector2i
 var end: Vector2i
 var visited: Array[Vector2i] = []
+var grid: Array[Vector2i] = [] #Grid stating if we have walls or not
 
 
 func _ready():
@@ -18,15 +19,17 @@ func _ready():
 
 
 func generate_maze() -> void:
+	grid.clear()
 	clear()
 	
 	for x in size.x:
 		for y in size.y:
-			set_cell(Vector2(x, y), 0, wall_id)
+			grid.append(Vector2i(x, y))
+			set_cell(Vector2(x, y), 0, Vector2i(0, 0))
 	
 	for x in float(size.x + 1) / 2:
 		for y in float(size.y + 1) / 2:
-			set_cell(Vector2(2 * x , 2 * y), 0, path_id)
+			grid.erase(Vector2i(2 * x, 2 * y))
 	
 	var current_cell: Vector2i = Vector2i.ZERO
 	visited = [current_cell]
@@ -41,7 +44,7 @@ func generate_maze() -> void:
 			var random_neighbour = neighbours[randi() % len(neighbours)]
 			stack.push_front(current_cell)
 			var wall: Vector2i = (random_neighbour - current_cell) / 2 + current_cell
-			set_cell(Vector2(wall.x, wall.y), 0, path_id)
+			grid.erase(wall)
 			current_cell = random_neighbour
 			visited.append(current_cell)
 		elif len(stack) > 0:
@@ -54,5 +57,6 @@ func generate_maze() -> void:
 	else:
 		start = Vector2i(0, random_start - size.x)
 		end = Vector2i(size.x - 1, size.y - (random_start - size.x))
-	set_cell(start, 0, position_id)
-	set_cell(end, 0, position_id)
+	
+	print(grid)
+	set_cells_terrain_connect(grid, 0, 0)
