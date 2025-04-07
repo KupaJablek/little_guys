@@ -13,16 +13,19 @@ var is_on_ladder : bool = false
 var just_started_climbing : bool = false
 var can_move : bool = true
 
+var has_cell : bool = false
+signal cell_gathered
+
 func _physics_process(delta: float) -> void:
 	if is_on_ladder:
-		_climb()
+		climb()
 	
 	elif is_on_floor():
 		if not sprite.is_playing():
 			sprite.play()
 		
 		velocity.y = 0.0
-		_walk()
+		walk()
 	
 	else:
 		velocity.y += gravity
@@ -30,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _climb() -> void:
+func climb() -> void:
 	if can_move:
 		var temp_velocity : Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		velocity.y = temp_velocity.y * climb_speed
@@ -50,7 +53,7 @@ func _climb() -> void:
 	if velocity.y == 0.0:
 		sprite.pause()
 
-func _walk() -> void:
+func walk() -> void:
 	if can_move:
 		var temp_velocity : Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		if temp_velocity.y > 0.0 and ladder_beneath_checker.has_overlapping_bodies(): #If moving down and ladder is underneath
