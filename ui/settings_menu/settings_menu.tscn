@@ -88,3 +88,4 @@ flat = true
 [connection signal="mouse_entered" from="IncreaseVolume" to="." method="_on_increase_volume_mouse_entered"]
 [connection signal="mouse_exited" from="IncreaseVolume" to="." method="_on_increase_volume_mouse_exited"]
 [connection signal="pressed" from="IncreaseVolume" to="." method="_on_increase_volume_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
