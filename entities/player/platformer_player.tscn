@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5dxil5xugwwg"]
+[gd_scene load_steps=14 format=3 uid="uid://5dxil5xugwwg"]
 
 [ext_resource type="Texture2D" uid="uid://drq0mty41qi1m" path="res://resources/Lungs/lungs_tileset.png" id="1_a3ejv"]
 [ext_resource type="Script" uid="uid://m6u8b2b8wq3r" path="res://entities/player/platformer_player.gd" id="1_ih0xr"]
@@ -79,12 +79,32 @@ animations = [{
 radius = 8.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih0xr"]
+size = Vector2(4, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hb8s"]
+size = Vector2(4, 16)
+
 [node name="platformer_player" type="CharacterBody2D"]
+collision_mask = 6
 script = ExtResource("1_ih0xr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_75eoh")
-animation = &"falling"
+frame_progress = 0.588428
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8ccfb")
+
+[node name="ladder_beneath_checker" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ladder_beneath_checker"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_ih0xr")
+
+[node name="ladder_behind_checker" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ladder_behind_checker"]
+shape = SubResource("RectangleShape2D_0hb8s")
