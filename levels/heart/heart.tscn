@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://drntt5wc3apjq"]
+[gd_scene load_steps=24 format=3 uid="uid://drntt5wc3apjq"]
 
 [ext_resource type="Texture2D" uid="uid://dp1wgmudfnnuc" path="res://resources/heart/heart_dance_pad.png" id="1_oogt8"]
 [ext_resource type="Script" uid="uid://bg7t5uk0a2um6" path="res://levels/heart/heart.gd" id="1_tvftf"]
@@ -21,6 +21,9 @@ size = Vector2(32, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f504h"]
 size = Vector2(32, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h02a2"]
+size = Vector2(477, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rhoi"]
 atlas = ExtResource("4_7rhoi")
@@ -189,6 +192,13 @@ scale = Vector2(2, 2)
 position = Vector2(200, 0)
 scale = Vector2(2, 2)
 
+[node name="MissedBeatArea" type="Area2D" parent="."]
+position = Vector2(480, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MissedBeatArea"]
+position = Vector2(1.5, 7.5)
+shape = SubResource("RectangleShape2D_h02a2")
+
 [node name="ArrowDespawnPoint" type="Node2D" parent="."]
 position = Vector2(480, 200)
 
@@ -242,5 +252,6 @@ vframes = 2
 frame = 3
 
 [connection signal="area_exited" from="Sprite2D/ScreenOverlay/ScreenArrows/LArrow" to="." method="_on_l_arrow_area_exited"]
+[connection signal="body_entered" from="MissedBeatArea" to="." method="_on_missed_beat_area_body_entered"]
 [connection signal="spawn_arrow" from="HeartRythm" to="." method="_on_heart_rythm_spawn_arrow"]
 [connection signal="timeout" from="HeartRythm" to="HeartRythm" method="_on_heart_rythm_timeout"]

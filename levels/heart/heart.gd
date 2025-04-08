@@ -7,6 +7,7 @@ class_name Heart
 @onready var up_hitbox : Area2D = $Sprite2D/ScreenOverlay/ScreenArrows/UArrow
 @onready var down_hitbox : Area2D = $Sprite2D/ScreenOverlay/ScreenArrows/DArrow
 @onready var right_hitbox : Area2D = $Sprite2D/ScreenOverlay/ScreenArrows/RArrow
+@onready var missed_beat_area : Area2D = $MissedBeatArea
 @onready var player_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 @export var arrow_speed : float = 100.0
@@ -41,19 +42,27 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("move_right"):
 			if right_hitbox.has_overlapping_bodies():
 				successful_arrow = right_hitbox.get_overlapping_bodies()[0]
-				player_sprite.frame = randi() % 5
+				if not player_sprite.animation == "dance":
+					player_sprite.animation = "dance"
+				player_sprite.frame = randi() % 6
 		if Input.is_action_just_pressed("move_left"):
 			if left_hitbox.has_overlapping_bodies():
 				successful_arrow = left_hitbox.get_overlapping_bodies()[0]
-				player_sprite.frame = randi() % 5
+				if not player_sprite.animation == "dance":
+					player_sprite.animation = "dance"
+				player_sprite.frame = randi() % 6
 		if Input.is_action_just_pressed("move_down"):
 			if down_hitbox.has_overlapping_bodies():
 				successful_arrow = down_hitbox.get_overlapping_bodies()[0]
-				player_sprite.frame = randi() % 5
+				if not player_sprite.animation == "dance":
+					player_sprite.animation = "dance"
+				player_sprite.frame = randi() % 6
 		if Input.is_action_just_pressed("move_up"):
 			if up_hitbox.has_overlapping_bodies():
 				successful_arrow = up_hitbox.get_overlapping_bodies()[0]
-				player_sprite.frame = randi() % 5
+				if not player_sprite.animation == "dance":
+					player_sprite.animation = "dance"
+				player_sprite.frame = randi() % 6
 	
 	#Free despawning arrows from the queue
 	for i in despawn_indices:
@@ -100,3 +109,8 @@ func _on_heart_rythm_spawn_arrow() -> void:
 		new_arrow.set_sprite_frame(sprite_down)
 	elif random_spawn == right_spawn:
 		new_arrow.set_sprite_frame(sprite_right)
+
+
+func _on_missed_beat_area_body_entered(body: Node2D) -> void:
+	player_sprite.animation = "fall"
+	player_sprite.frame = randi() % 2
