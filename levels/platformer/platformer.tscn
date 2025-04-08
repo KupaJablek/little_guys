@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://wtv8uf34yfhg"]
+[gd_scene load_steps=15 format=4 uid="uid://wtv8uf34yfhg"]
 
 [ext_resource type="Texture2D" uid="uid://pop6wkq4v2l2" path="res://resources/lungs.png" id="1_sb63h"]
 [ext_resource type="Script" uid="uid://b3f4wowljsta0" path="res://levels/platformer/platformer.gd" id="1_tjjl6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://p0oq5myp62nu" path="res://entities/platformer/deoxygenated_cell.tscn" id="5_sb7ts"]
 [ext_resource type="PackedScene" uid="uid://dypb3bhkf6qw2" path="res://entities/platformer/oxygenated_cell.tscn" id="6_dxts3"]
 [ext_resource type="PackedScene" uid="uid://crlxp32gad7qq" path="res://entities/platformer/oxygen_depot.tscn" id="6_xl7ot"]
+[ext_resource type="AudioStream" uid="uid://nthi8nniej33" path="res://resources/Audio/Music/lungs.ogg" id="8_dxts3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_unnub"]
 texture = ExtResource("2_1d3vj")
@@ -197,6 +198,8 @@ position = Vector2(265, 201)
 position = Vector2(154, 88)
 
 [node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dxts3")
+autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(158, 119)
