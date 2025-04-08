@@ -174,7 +174,7 @@ position = Vector2(88, 57)
 position = Vector2(84, 219)
 
 [node name="spawn3" type="Node2D" parent="oxygen_spawns"]
-position = Vector2(120, 86)
+position = Vector2(120, 88)
 
 [node name="spawn4" type="Node2D" parent="oxygen_spawns"]
 position = Vector2(56, 218)
