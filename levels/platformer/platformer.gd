@@ -9,17 +9,22 @@ extends Node2D
 var is_active : bool = true
 var cells_oxygenated : int = 0
 
+signal task_complete
+
 func _physics_process(delta: float) -> void:
 	if is_active:
 		if deoxygenated_cell.has_overlapping_bodies() and not player.has_cell:
 			player.has_cell = true
-			deoxygenated_cell.hide()
+			deoxygenated_cell.hide() #Cell is hidden until delivered
 		if oxygen_depot.has_overlapping_bodies():
 			if player.has_cell:
 				cells_oxygenated += 1
 				player.has_cell = false
-				deoxygenated_cell.show()
-				print("Oxygen delivered: ", cells_oxygenated)
+				deoxygenated_cell.show() #Cell appears in new area
+				
+				if cells_oxygenated == oxygen_needed:
+					task_complete.emit()
+					cells_oxygenated = 0 #Reset cell counter
 
 func set_active_state(active_state : bool) -> void:
 	is_active = active_state
