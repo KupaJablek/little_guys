@@ -184,7 +184,7 @@ position = Vector2(200, 0)
 scale = Vector2(2, 2)
 
 [node name="ArrowDespawnPoint" type="Node2D" parent="."]
-position = Vector2(480, 275)
+position = Vector2(480, 200)
 
 [node name="HeartMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_x1lid")

@@ -46,7 +46,6 @@ func _physics_process(delta: float) -> void:
 	#Free despawning arrows from the queue
 	for i in despawn_indices:
 		all_arrows[i].queue_free()
-		print("Deleted!")
 	#Empty the despawn index array
 	despawn_indices = []
 	#Swap arrow array with active arrow array, then empty active arrow array
