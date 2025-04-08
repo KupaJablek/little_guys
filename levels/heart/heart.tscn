@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://drntt5wc3apjq"]
+[gd_scene load_steps=18 format=3 uid="uid://drntt5wc3apjq"]
 
 [ext_resource type="Texture2D" uid="uid://dp1wgmudfnnuc" path="res://resources/heart/heart_dance_pad.png" id="1_oogt8"]
 [ext_resource type="Script" uid="uid://bg7t5uk0a2um6" path="res://levels/heart/heart.gd" id="1_tvftf"]
+[ext_resource type="Texture2D" uid="uid://bcdrulroyri3i" path="res://resources/UI/Settings_menu/bg.png" id="3_mwhxw"]
 [ext_resource type="AudioStream" uid="uid://bgfdr5yd0knxn" path="res://resources/Audio/Music/heart.ogg" id="3_x1lid"]
 [ext_resource type="Texture2D" uid="uid://cg51jxhytn1ct" path="res://resources/heart/little_guy_dance.png" id="4_7rhoi"]
+[ext_resource type="Texture2D" uid="uid://bxqo7w1lpjfue" path="res://resources/body_overview/heart_indicator.png" id="4_urcd8"]
 [ext_resource type="Script" uid="uid://bk3nvnvsaglbx" path="res://levels/heart/heart_rythm.gd" id="5_oau7h"]
 [ext_resource type="Texture2D" uid="uid://bag17yl7pfx85" path="res://resources/heart/heart_arrows.png" id="6_mbqlm"]
 
@@ -85,6 +87,61 @@ position = Vector2(480, 360)
 scale = Vector2(3, 3)
 texture = ExtResource("1_oogt8")
 
+[node name="ScreenOverlay" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0.5, -83.5)
+scale = Vector2(0.496875, 0.304167)
+texture = ExtResource("3_mwhxw")
+
+[node name="ScreenHeart" type="Sprite2D" parent="Sprite2D/ScreenOverlay"]
+position = Vector2(0, -50)
+scale = Vector2(1.20755, 1.9726)
+texture = ExtResource("4_urcd8")
+
+[node name="ScreenArrows" type="Node2D" parent="Sprite2D/ScreenOverlay"]
+position = Vector2(0, 60)
+scale = Vector2(2.01258, 3.28767)
+
+[node name="LArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
+modulate = Color(0.76662, 0.76662, 0.76662, 1)
+position = Vector2(-60, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_mbqlm")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="UArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
+modulate = Color(0.76662, 0.76662, 0.76662, 1)
+position = Vector2(-20, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_mbqlm")
+hframes = 2
+vframes = 2
+
+[node name="DArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
+modulate = Color(0.76662, 0.76662, 0.76662, 1)
+position = Vector2(20, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_mbqlm")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="RArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
+modulate = Color(0.76662, 0.76662, 0.76662, 1)
+position = Vector2(60, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_mbqlm")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="ArrowSpawns" type="Node2D" parent="Sprite2D/ScreenOverlay"]
+position = Vector2(0, -200)
+
+[node name="LSPawn" type="Node2D" parent="Sprite2D/ScreenOverlay/ArrowSpawns"]
+position = Vector2(-60, 0)
+
 [node name="HeartMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_x1lid")
 autoplay = true
@@ -95,8 +152,6 @@ position = Vector2(480, 368)
 scale = Vector2(2.0625, 2.0625)
 sprite_frames = SubResource("SpriteFrames_f504h")
 animation = &"dance"
-frame = 3
-frame_progress = 0.241988
 
 [node name="HeartRythm" type="Timer" parent="."]
 autostart = true
