@@ -109,13 +109,13 @@ theme_override_font_sizes/font_size = 50
 text = "Lead Audio Designer"
 horizontal_alignment = 1
 
-[node name="julian" type="Label" parent="VBoxContainer/VBoxContainer3"]
+[node name="gPhantasm" type="Label" parent="VBoxContainer/VBoxContainer3"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.964706, 0.984314, 0.85098, 1)
 theme_override_fonts/font = ExtResource("4_rqgi2")
 theme_override_font_sizes/font_size = 30
-text = "Julian Barua"
+text = "gooeyPhantasm"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="back_button" to="." method="_on_texture_button_pressed"]
