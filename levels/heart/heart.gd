@@ -7,6 +7,7 @@ class_name Heart
 @onready var up_hitbox : Area2D = $Sprite2D/ScreenOverlay/ScreenArrows/UArrow
 @onready var down_hitbox : Area2D = $Sprite2D/ScreenOverlay/ScreenArrows/DArrow
 @onready var right_hitbox : Area2D = $Sprite2D/ScreenOverlay/ScreenArrows/RArrow
+@onready var player_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 @export var arrow_speed : float = 100.0
 
@@ -40,15 +41,19 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("move_right"):
 			if right_hitbox.has_overlapping_bodies():
 				successful_arrow = right_hitbox.get_overlapping_bodies()[0]
-		if Input.is_action_pressed("move_left"):
+				player_sprite.frame = randi() % 5
+		if Input.is_action_just_pressed("move_left"):
 			if left_hitbox.has_overlapping_bodies():
 				successful_arrow = left_hitbox.get_overlapping_bodies()[0]
-		if Input.is_action_pressed("move_down"):
+				player_sprite.frame = randi() % 5
+		if Input.is_action_just_pressed("move_down"):
 			if down_hitbox.has_overlapping_bodies():
 				successful_arrow = down_hitbox.get_overlapping_bodies()[0]
-		if Input.is_action_pressed("move_up"):
+				player_sprite.frame = randi() % 5
+		if Input.is_action_just_pressed("move_up"):
 			if up_hitbox.has_overlapping_bodies():
 				successful_arrow = up_hitbox.get_overlapping_bodies()[0]
+				player_sprite.frame = randi() % 5
 	
 	#Free despawning arrows from the queue
 	for i in despawn_indices:

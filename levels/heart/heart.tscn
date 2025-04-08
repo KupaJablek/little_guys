@@ -11,16 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://da42d1h4meqet" path="res://resources/heart/heart_dance_pad_transparent_screen.png" id="6_urcd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwhxw"]
-size = Vector2(32, 14)
+size = Vector2(32, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urcd8"]
-size = Vector2(32, 14)
+size = Vector2(32, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4685n"]
-size = Vector2(32, 14)
+size = Vector2(32, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f504h"]
-size = Vector2(32, 14)
+size = Vector2(32, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rhoi"]
 atlas = ExtResource("4_7rhoi")
@@ -241,5 +241,6 @@ hframes = 2
 vframes = 2
 frame = 3
 
+[connection signal="area_exited" from="Sprite2D/ScreenOverlay/ScreenArrows/LArrow" to="." method="_on_l_arrow_area_exited"]
 [connection signal="spawn_arrow" from="HeartRythm" to="." method="_on_heart_rythm_spawn_arrow"]
 [connection signal="timeout" from="HeartRythm" to="HeartRythm" method="_on_heart_rythm_timeout"]
