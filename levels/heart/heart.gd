@@ -9,6 +9,7 @@ class_name Heart
 var rhythm_arrow = preload("res://entities/heart/rhythm_arrow.tscn")
 var all_arrows : Array[CharacterBody2D] = []
 var active_arrows : Array[CharacterBody2D] = []
+var despawn_indices : Array[int] = []
 var is_active: bool = false
 ### Variables for sprite directions ###
 var sprite_left : int = 3
@@ -36,7 +37,19 @@ func _physics_process(delta: float) -> void:
 		# Add active arrows to the active arrow array
 		if arrow.position.y <= arrow_despawn_point.position.y:
 			active_arrows.append(arrow)
+		else:
+			#Track the indices of arrows to despawn
+			despawn_indices.append(arrow_index)
+		
+		arrow_index += 1
 	
+	#Free despawning arrows from the queue
+	for i in despawn_indices:
+		all_arrows[i].queue_free()
+		print("Deleted!")
+	#Empty the despawn index array
+	despawn_indices = []
+	#Swap arrow array with active arrow array, then empty active arrow array
 	all_arrows = active_arrows
 	active_arrows = []
 
