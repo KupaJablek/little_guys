@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=3 uid="uid://dph7sfa8hyisu"]
+
+[ext_resource type="Script" uid="uid://bx3hyug88dpq0" path="res://ui/credits/credits.gd" id="1_2n5wy"]
+[ext_resource type="Texture2D" uid="uid://bcdrulroyri3i" path="res://resources/UI/Settings_menu/bg.png" id="2_nnsry"]
+[ext_resource type="Texture2D" uid="uid://b4de131mo5s64" path="res://resources/UI/Settings_menu/back_button.png" id="3_nnsry"]
+[ext_resource type="FontFile" uid="uid://bm6q87o23fb2x" path="res://resources/font/arcadeclassic.regular.ttf" id="4_rqgi2"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2n5wy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 720.0
+texture = ExtResource("2_nnsry")
+
+[node name="back_button" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 602.0
+offset_right = 115.0
+offset_bottom = 687.0
+texture_normal = ExtResource("3_nnsry")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 89.0
+offset_right = 960.0
+offset_bottom = 602.0
+theme_override_constants/separation = 15
+
+[node name="credits_title" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.776471, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 80
+text = "Credits!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="programmers_title" type="Label" parent="VBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929412, 0.623529, 0.164706, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 50
+text = "Lead Programmers"
+horizontal_alignment = 1
+
+[node name="robert" type="Label" parent="VBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.964706, 0.984314, 0.85098, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 30
+text = "Robert Turnbull"
+horizontal_alignment = 1
+
+[node name="Ian" type="Label" parent="VBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.964706, 0.984314, 0.85098, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 30
+text = "Ian Ginson"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="art_title" type="Label" parent="VBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.290196, 0.890196, 0.74902, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 50
+text = "Lead Artist"
+horizontal_alignment = 1
+
+[node name="maximus" type="Label" parent="VBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.964706, 0.984314, 0.85098, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 30
+text = "Maximus Slabon"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="music_title" type="Label" parent="VBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87451, 0.309804, 0.803922, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 50
+text = "Lead Audio Designer"
+horizontal_alignment = 1
+
+[node name="julian" type="Label" parent="VBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.964706, 0.984314, 0.85098, 1)
+theme_override_fonts/font = ExtResource("4_rqgi2")
+theme_override_font_sizes/font_size = 30
+text = "Julian Barua"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="back_button" to="." method="_on_texture_button_pressed"]
