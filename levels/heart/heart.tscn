@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bxqo7w1lpjfue" path="res://resources/body_overview/heart_indicator.png" id="4_urcd8"]
 [ext_resource type="Script" uid="uid://bk3nvnvsaglbx" path="res://levels/heart/heart_rythm.gd" id="5_oau7h"]
 [ext_resource type="Texture2D" uid="uid://bag17yl7pfx85" path="res://resources/heart/heart_arrows.png" id="6_mbqlm"]
-[ext_resource type="Texture2D" uid="uid://da42d1h4meqet" path="res://resources/heart/heart_dance_pad_transparent_screen.png" id="6_urcd8"]
+[ext_resource type="Texture2D" uid="uid://bfxyvpabwygal" path="res://resources/heart/heart_dance_pad_transparent_screen.png" id="6_urcd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwhxw"]
 size = Vector2(32, 10)

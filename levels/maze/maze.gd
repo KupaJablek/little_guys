@@ -58,3 +58,6 @@ func generate_maze() -> void:
 		end = Vector2i(size.x - 1, size.y - (random_start - size.x))
 	set_cell(start, 0, position_id)
 	set_cell(end, 0, position_id)
+
+func set_active_state(state : bool) -> void:
+	is_active = state

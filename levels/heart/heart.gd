@@ -9,6 +9,7 @@ class_name Heart
 @onready var right_hitbox : Area2D = $Sprite2D/ScreenOverlay/ScreenArrows/RArrow
 @onready var missed_beat_area : Area2D = $MissedBeatArea
 @onready var player_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var bg_music : AudioStreamPlayer = $HeartMusic
 
 @export var arrow_speed : float = 100.0
 @export var arrows_to_win : int = 10
@@ -97,6 +98,14 @@ func move_arrows() -> void:
 		
 		arrow_index += 1
 
+func set_active_state(state : bool) -> void:
+	is_active = state
+	#Mute game if inactive, unmute if active
+	if state:
+		bg_music.volume_db = 0.0
+	else:
+		bg_music.volume_db = -80.0
+
 func _on_heart_rythm_spawn_arrow() -> void:
 	#Create a new rhythm arrow, add it to the array of active arrows
 	var new_arrow : CharacterBody2D = rhythm_arrow.instantiate()
@@ -118,5 +127,6 @@ func _on_heart_rythm_spawn_arrow() -> void:
 
 
 func _on_missed_beat_area_body_entered(body: Node2D) -> void:
-	player_sprite.animation = "fall"
-	player_sprite.frame = randi() % 2
+	if is_active: #Only play missed beat animation when player is in control
+		player_sprite.animation = "fall"
+		player_sprite.frame = randi() % 2
