@@ -12,6 +12,8 @@ var start: Vector2i
 var end: Vector2i
 var visited: Array[Vector2i] = []
 
+var is_active : bool = true # Used to prevent player interaction when another game is active
+
 
 func _ready():
 	generate_maze()
@@ -56,3 +58,6 @@ func generate_maze() -> void:
 		end = Vector2i(size.x - 1, size.y - (random_start - size.x))
 	set_cell(start, 0, position_id)
 	set_cell(end, 0, position_id)
+
+func set_active_state(state : bool) -> void:
+	is_active = state

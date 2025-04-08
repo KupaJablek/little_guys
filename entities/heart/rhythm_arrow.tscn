@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy2ogcwbvkhwa"]
+
+[ext_resource type="Texture2D" uid="uid://bag17yl7pfx85" path="res://resources/heart/heart_arrows.png" id="1_2u2o6"]
+[ext_resource type="Script" uid="uid://cu4bs3fva02gk" path="res://entities/heart/rhythm_arrow.gd" id="1_31lxu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u2o6"]
+size = Vector2(32, 4)
+
+[node name="rhythm_arrow" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_31lxu")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_2u2o6")
+hframes = 2
+vframes = 2
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2u2o6")

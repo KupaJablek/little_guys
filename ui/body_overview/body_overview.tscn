@@ -1,0 +1,213 @@
+[gd_scene load_steps=12 format=4 uid="uid://c76ti3otswpug"]
+
+[ext_resource type="Texture2D" uid="uid://4jakgcewot30" path="res://resources/body_overview/background.png" id="1_7r77e"]
+[ext_resource type="Script" uid="uid://b8y80ufu0msnr" path="res://ui/body_overview/body_overview.gd" id="1_dqos1"]
+[ext_resource type="Texture2D" uid="uid://cucsul5y2wlak" path="res://resources/body_overview/brain_monitor.png" id="2_tvica"]
+[ext_resource type="Texture2D" uid="uid://qq2b5o05ff3o" path="res://resources/body_overview/lung_monitor.png" id="3_8rhty"]
+[ext_resource type="PackedScene" uid="uid://d4futrerd4fr6" path="res://levels/maze/maze.tscn" id="3_tvica"]
+[ext_resource type="Texture2D" uid="uid://bnt4sh7h5prvn" path="res://resources/body_overview/heart_monitor.png" id="4_3s1xt"]
+[ext_resource type="Texture2D" uid="uid://1o4guj6eh7xp" path="res://resources/body_overview/big_guy.png" id="5_nnyly"]
+[ext_resource type="Texture2D" uid="uid://bxhd0dgaunlw1" path="res://resources/body_overview/brain_indicator.png" id="7_3s1xt"]
+[ext_resource type="PackedScene" uid="uid://drntt5wc3apjq" path="res://levels/heart/heart.tscn" id="7_6uvyn"]
+[ext_resource type="Texture2D" uid="uid://b4clnwfxiffbj" path="res://resources/body_overview/lungs_indicator.png" id="8_nnyly"]
+[ext_resource type="Texture2D" uid="uid://bxqo7w1lpjfue" path="res://resources/body_overview/heart_indicator.png" id="9_nnyly"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dqos1")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 720.0
+texture = ExtResource("1_7r77e")
+
+[node name="Brain" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 25.0
+offset_right = 423.0
+offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="Brain"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Brain"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Brain"]
+layout_mode = 2
+
+[node name="brain_monitor" type="TextureRect" parent="Brain/HBoxContainer"]
+z_index = 1
+texture_filter = 1
+custom_minimum_size = Vector2(368, 272)
+layout_mode = 2
+texture = ExtResource("2_tvica")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Brain/HBoxContainer/brain_monitor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = -15.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Brain/HBoxContainer/brain_monitor/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(338, 240)
+render_target_update_mode = 4
+
+[node name="Maze" parent="Brain/HBoxContainer/brain_monitor/SubViewportContainer/SubViewport" instance=ExtResource("3_tvica")]
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAADAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAADAAAAAAAAAAUAAAADAAAAAAAAAAYAAAADAAAAAAAAAAcAAAADAAAAAAAAAAgAAAADAAAAAAAAAAkAAAADAAAAAAAAAAoAAAADAAAAAAAAAAsAAAADAAAAAAAAAAwAAAADAAAAAAAAAA0AAAADAAAAAAAAAA4AAAADAAAAAAABAAAAAAADAAAAAAABAAEAAAAAAAAAAAABAAIAAAADAAAAAAABAAMAAAAAAAAAAAABAAQAAAADAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAADAAAAAAACAAAAAAADAAAAAAACAAEAAAAAAAAAAAACAAIAAAADAAAAAAACAAMAAAAAAAAAAAACAAQAAAADAAAAAAACAAUAAAADAAAAAAACAAYAAAADAAAAAAACAAcAAAAAAAAAAAACAAgAAAADAAAAAAACAAkAAAADAAAAAAACAAoAAAADAAAAAAACAAsAAAADAAAAAAACAAwAAAADAAAAAAACAA0AAAAAAAAAAAACAA4AAAADAAIAAAADAAAAAAADAAAAAAADAAEAAAAAAAAAAAADAAIAAAADAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAADAAAAAAADAAcAAAAAAAAAAAADAAgAAAADAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAADAAAAAAAEAAAAAAADAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAADAAAAAAAEAAMAAAADAAAAAAAEAAQAAAADAAAAAAAEAAUAAAADAAAAAAAEAAYAAAADAAAAAAAEAAcAAAADAAAAAAAEAAgAAAADAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAADAAAAAAAEAAsAAAADAAAAAAAEAAwAAAADAAAAAAAEAA0AAAADAAAAAAAEAA4AAAADAAAAAAAFAAAAAAADAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAADAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAADAAAAAAAGAAAAAAADAAAAAAAGAAEAAAADAAAAAAAGAAIAAAADAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAADAAAAAAAGAAUAAAADAAAAAAAGAAYAAAADAAAAAAAGAAcAAAADAAAAAAAGAAgAAAADAAAAAAAGAAkAAAADAAAAAAAGAAoAAAADAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAADAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAADAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAADAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAADAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAADAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAADAAAAAAAIAAAAAAADAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAADAAAAAAAIAAMAAAADAAAAAAAIAAQAAAADAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAADAAAAAAAIAAcAAAADAAAAAAAIAAgAAAADAAAAAAAIAAkAAAADAAAAAAAIAAoAAAADAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAADAAAAAAAIAA0AAAADAAAAAAAIAA4AAAADAAAAAAAJAAAAAAADAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAADAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAADAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAAAAAAADAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAADAAAAAAAKAAMAAAADAAAAAAAKAAQAAAADAAAAAAAKAAUAAAADAAAAAAAKAAYAAAADAAAAAAAKAAcAAAADAAAAAAAKAAgAAAADAAAAAAAKAAkAAAADAAAAAAAKAAoAAAADAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAADAAAAAAAKAA0AAAADAAAAAAAKAA4AAAADAAAAAAALAAAAAAADAAAAAAALAAEAAAAAAAAAAAALAAIAAAADAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAADAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAADAAAAAAAMAAAAAAADAAAAAAAMAAEAAAADAAAAAAAMAAIAAAADAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAADAAAAAAAMAAUAAAADAAAAAAAMAAYAAAADAAAAAAAMAAcAAAADAAAAAAAMAAgAAAADAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAADAAAAAAAMAAsAAAADAAAAAAAMAAwAAAADAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAADAAAAAAANAAAAAAADAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAADAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAADAAAAAAANAA0AAAAAAAAAAAANAA4AAAADAAAAAAAOAAAAAAADAAAAAAAOAAEAAAADAAAAAAAOAAIAAAADAAAAAAAOAAMAAAADAAAAAAAOAAQAAAADAAAAAAAOAAUAAAADAAAAAAAOAAYAAAADAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAADAAAAAAAOAAkAAAADAAAAAAAOAAoAAAADAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAADAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAADAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAADAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAADAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAADAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAADAAAAAAAQAAAAAAADAAAAAAAQAAEAAAADAAAAAAAQAAIAAAADAAAAAAAQAAMAAAADAAAAAAAQAAQAAAADAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAADAAAAAAAQAAcAAAADAAAAAAAQAAgAAAADAAAAAAAQAAkAAAADAAAAAAAQAAoAAAADAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAADAAAAAAAQAA0AAAADAAAAAAAQAA4AAAADAAAAAAARAAAAAAADAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAADAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAADAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAASAAAAAAADAAAAAAASAAEAAAAAAAAAAAASAAIAAAADAAAAAAASAAMAAAADAAAAAAASAAQAAAADAAAAAAASAAUAAAADAAAAAAASAAYAAAADAAAAAAASAAcAAAADAAAAAAASAAgAAAADAAAAAAASAAkAAAAAAAAAAAASAAoAAAADAAAAAAASAAsAAAAAAAAAAAASAAwAAAADAAAAAAASAA0AAAADAAAAAAASAA4AAAADAAAAAAATAAAAAAADAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAADAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAADAAAAAAAUAAAAAAADAAIAAAAUAAEAAAADAAAAAAAUAAIAAAADAAAAAAAUAAMAAAADAAAAAAAUAAQAAAADAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAADAAAAAAAUAAcAAAADAAAAAAAUAAgAAAADAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAADAAAAAAAUAAsAAAADAAAAAAAUAAwAAAADAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAADAAAAAAAVAAAAAAADAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAADAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAADAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAADAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAADAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAADAAAAAAAWAAAAAAADAAAAAAAWAAEAAAADAAAAAAAWAAIAAAADAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAADAAAAAAAWAAUAAAADAAAAAAAWAAYAAAADAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAADAAAAAAAWAAkAAAADAAAAAAAWAAoAAAADAAAAAAAWAAsAAAADAAAAAAAWAAwAAAADAAAAAAAWAA0AAAADAAAAAAAWAA4AAAADAAAAAAA=")
+
+[node name="brain_button" type="Button" parent="Brain/HBoxContainer"]
+self_modulate = Color(1, 0, 1, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Lungs" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 364.0
+offset_right = 423.0
+offset_bottom = 679.0
+
+[node name="Label" type="Label" parent="Lungs"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Lungs"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Lungs"]
+layout_mode = 2
+
+[node name="lungs_monitor" type="TextureRect" parent="Lungs/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(368, 272)
+layout_mode = 2
+texture = ExtResource("3_8rhty")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Lungs/HBoxContainer/lungs_monitor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = -15.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Lungs/HBoxContainer/lungs_monitor/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(338, 240)
+render_target_update_mode = 4
+
+[node name="lungs_button" type="Button" parent="Lungs/HBoxContainer"]
+self_modulate = Color(0, 1, 1, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Heart" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 25.0
+offset_right = 893.0
+offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="Heart"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Heart"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Heart"]
+layout_mode = 2
+
+[node name="heart_monitor" type="TextureRect" parent="Heart/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(368, 272)
+layout_mode = 2
+texture = ExtResource("4_3s1xt")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Heart/HBoxContainer/heart_monitor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.5
+offset_right = 607.0
+offset_bottom = 462.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Heart/HBoxContainer/heart_monitor/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(960, 720)
+render_target_update_mode = 4
+
+[node name="Heart" parent="Heart/HBoxContainer/heart_monitor/SubViewportContainer/SubViewport" instance=ExtResource("7_6uvyn")]
+
+[node name="heart_button" type="Button" parent="Heart/HBoxContainer"]
+self_modulate = Color(1, 1, 0, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="big_guy" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 681.0
+offset_top = 387.0
+offset_right = 893.0
+offset_bottom = 677.0
+texture = ExtResource("5_nnyly")
+
+[node name="brain" type="TextureRect" parent="big_guy"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 13.0
+offset_right = 130.0
+offset_bottom = 55.0
+texture = ExtResource("7_3s1xt")
+expand_mode = 1
+
+[node name="lungs" type="TextureRect" parent="big_guy"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 94.0
+offset_right = 141.0
+offset_bottom = 166.0
+texture = ExtResource("8_nnyly")
+expand_mode = 1
+
+[node name="lungs2" type="TextureRect" parent="big_guy"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 94.0
+offset_right = 140.0
+offset_bottom = 142.0
+texture = ExtResource("9_nnyly")
+expand_mode = 1
+
+[connection signal="pressed" from="Brain/HBoxContainer/brain_button" to="." method="_on_brain_button_pressed"]
+[connection signal="pressed" from="Lungs/HBoxContainer/lungs_button" to="." method="_on_lungs_button_pressed"]
+[connection signal="pressed" from="Heart/HBoxContainer/heart_button" to="." method="_on_heart_button_pressed"]
