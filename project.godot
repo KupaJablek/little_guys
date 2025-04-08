@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LittleGuys"
-run/main_scene="res://ui/main_menu/main_menu.tscn"
+run/main_scene="uid://b7l5l81klp00s"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
