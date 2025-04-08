@@ -102,12 +102,12 @@ texture = ExtResource("4_urcd8")
 
 [node name="ScreenArrows" type="Node2D" parent="Sprite2D/ScreenOverlay"]
 position = Vector2(0, 60)
-scale = Vector2(2.01258, 3.28767)
+scale = Vector2(0.612, 1)
 
 [node name="LArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
 modulate = Color(0.76662, 0.76662, 0.76662, 1)
-position = Vector2(-60, 0)
-scale = Vector2(0.7, 0.7)
+position = Vector2(-200, 0)
+scale = Vector2(2, 2)
 texture = ExtResource("6_mbqlm")
 hframes = 2
 vframes = 2
@@ -117,13 +117,12 @@ frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ScreenOverlay/ScreenArrows/LArrow/Area2D"]
 position = Vector2(1.52588e-05, -0.119049)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mwhxw")
 
 [node name="UArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
 modulate = Color(0.76662, 0.76662, 0.76662, 1)
-position = Vector2(-20, 0)
-scale = Vector2(0.7, 0.7)
+position = Vector2(-67, 0)
+scale = Vector2(2, 2)
 texture = ExtResource("6_mbqlm")
 hframes = 2
 vframes = 2
@@ -132,13 +131,12 @@ vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ScreenOverlay/ScreenArrows/UArrow/Area2D"]
 position = Vector2(1.52588e-05, -0.119049)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mwhxw")
 
 [node name="DArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
 modulate = Color(0.76662, 0.76662, 0.76662, 1)
-position = Vector2(20, 0)
-scale = Vector2(0.7, 0.7)
+position = Vector2(67, 0)
+scale = Vector2(2, 2)
 texture = ExtResource("6_mbqlm")
 hframes = 2
 vframes = 2
@@ -148,13 +146,12 @@ frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ScreenOverlay/ScreenArrows/DArrow/Area2D"]
 position = Vector2(1.52588e-05, -0.119049)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mwhxw")
 
 [node name="RArrow" type="Sprite2D" parent="Sprite2D/ScreenOverlay/ScreenArrows"]
 modulate = Color(0.76662, 0.76662, 0.76662, 1)
-position = Vector2(60, 0)
-scale = Vector2(0.7, 0.7)
+position = Vector2(200, 0)
+scale = Vector2(2, 2)
 texture = ExtResource("6_mbqlm")
 hframes = 2
 vframes = 2
@@ -164,14 +161,30 @@ frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ScreenOverlay/ScreenArrows/RArrow/Area2D"]
 position = Vector2(1.52588e-05, -0.119049)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mwhxw")
 
 [node name="ArrowSpawns" type="Node2D" parent="Sprite2D/ScreenOverlay"]
 position = Vector2(0, -200)
+scale = Vector2(0.612, 1)
 
-[node name="LSPawn" type="Node2D" parent="Sprite2D/ScreenOverlay/ArrowSpawns"]
-position = Vector2(-60, 0)
+[node name="LSpawn" type="Node2D" parent="Sprite2D/ScreenOverlay/ArrowSpawns"]
+position = Vector2(-200, 0)
+scale = Vector2(2, 2)
+
+[node name="USpawn" type="Node2D" parent="Sprite2D/ScreenOverlay/ArrowSpawns"]
+position = Vector2(-67, 0)
+scale = Vector2(2, 2)
+
+[node name="DSpawn" type="Node2D" parent="Sprite2D/ScreenOverlay/ArrowSpawns"]
+position = Vector2(67, 0)
+scale = Vector2(2, 2)
+
+[node name="RSpawn" type="Node2D" parent="Sprite2D/ScreenOverlay/ArrowSpawns"]
+position = Vector2(200, 0)
+scale = Vector2(2, 2)
+
+[node name="ArrowDespawnPoint" type="Node2D" parent="."]
+position = Vector2(480, 275)
 
 [node name="HeartMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_x1lid")
@@ -216,4 +229,5 @@ hframes = 2
 vframes = 2
 frame = 3
 
+[connection signal="spawn_arrow" from="HeartRythm" to="." method="_on_heart_rythm_spawn_arrow"]
 [connection signal="timeout" from="HeartRythm" to="HeartRythm" method="_on_heart_rythm_timeout"]
