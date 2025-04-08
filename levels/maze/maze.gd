@@ -4,9 +4,13 @@ class_name Maze
 
 
 @export var size: Vector2i #Must be ODD number
-#@export var wall_id: Vector2i
-#@export var path_id: Vector2i
-#@export var position_id: Vector2i
+@export var completion_tile_location: Vector2i
+
+
+@onready var background: TileMapLayer = $Background
+@onready var checkpoints: TileMapLayer = $Checkpoints
+@onready var completion: Area2D = $Completion
+@onready var player = null
 
 var start: Vector2i
 var end: Vector2i
@@ -15,6 +19,7 @@ var grid: Array[Vector2i] = [] #Grid stating if we have walls or not
 
 
 func _ready():
+	#Set background.  This will not change
 	generate_maze()
 
 
@@ -24,12 +29,11 @@ func generate_maze() -> void:
 	
 	for x in size.x:
 		for y in size.y:
-			grid.append(Vector2i(x, y))
 			set_cell(Vector2(x, y), 0, Vector2i(0, 0))
 	
 	for x in float(size.x + 1) / 2:
 		for y in float(size.y + 1) / 2:
-			grid.erase(Vector2i(2 * x, 2 * y))
+			grid.append(Vector2i(2 * int(x), 2 * int(y)))
 	
 	var current_cell: Vector2i = Vector2i.ZERO
 	visited = [current_cell]
@@ -44,7 +48,7 @@ func generate_maze() -> void:
 			var random_neighbour = neighbours[randi() % len(neighbours)]
 			stack.push_front(current_cell)
 			var wall: Vector2i = (random_neighbour - current_cell) / 2 + current_cell
-			grid.erase(wall)
+			grid.append(wall)
 			current_cell = random_neighbour
 			visited.append(current_cell)
 		elif len(stack) > 0:
@@ -58,5 +62,16 @@ func generate_maze() -> void:
 		start = Vector2i(0, random_start - size.x)
 		end = Vector2i(size.x - 1, size.y - (random_start - size.x))
 	
-	print(grid)
 	set_cells_terrain_connect(grid, 0, 0)
+	for x in size.x:
+		for y in size.y:
+			if Vector2i(x, y) not in grid:
+				set_cell(Vector2i(x, y))
+	
+	checkpoints.set_cell(end, 0, completion_tile_location)
+	#Set the players starting location to start
+	completion.position = Vector2(tile_set.tile_size * end) + tile_set.tile_size * 0.5
+
+
+func _on_completion_entered(body: Node2D) -> void:
+	pass #This is our win condition.  We need to add extra dopamine?  Clear our objective and regenerate the maze. Play win sound?
