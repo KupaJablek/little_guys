@@ -88,7 +88,9 @@ autoplay = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f504h")
-animation = &"fall"
+animation = &"dance"
+frame = 3
+frame_progress = 0.1649
 
 [node name="HeartRythm" type="Timer" parent="."]
 autostart = true
