@@ -11,8 +11,10 @@ class_name Heart
 @onready var player_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 @export var arrow_speed : float = 100.0
+@export var arrows_to_win : int = 10
 
 var rhythm_arrow = preload("res://entities/heart/rhythm_arrow.tscn")
+var success_counter : int = 0
 var successful_arrow : Node = null
 var all_arrows : Array[CharacterBody2D] = []
 var active_arrows : Array[CharacterBody2D] = []
@@ -45,24 +47,28 @@ func _physics_process(delta: float) -> void:
 				if not player_sprite.animation == "dance":
 					player_sprite.animation = "dance"
 				player_sprite.frame = randi() % 6
+				success_counter += 1
 		if Input.is_action_just_pressed("move_left"):
 			if left_hitbox.has_overlapping_bodies():
 				successful_arrow = left_hitbox.get_overlapping_bodies()[0]
 				if not player_sprite.animation == "dance":
 					player_sprite.animation = "dance"
 				player_sprite.frame = randi() % 6
+				success_counter += 1
 		if Input.is_action_just_pressed("move_down"):
 			if down_hitbox.has_overlapping_bodies():
 				successful_arrow = down_hitbox.get_overlapping_bodies()[0]
 				if not player_sprite.animation == "dance":
 					player_sprite.animation = "dance"
 				player_sprite.frame = randi() % 6
+				success_counter += 1
 		if Input.is_action_just_pressed("move_up"):
 			if up_hitbox.has_overlapping_bodies():
 				successful_arrow = up_hitbox.get_overlapping_bodies()[0]
 				if not player_sprite.animation == "dance":
 					player_sprite.animation = "dance"
 				player_sprite.frame = randi() % 6
+				success_counter += 1
 	
 	#Free despawning arrows from the queue
 	for i in despawn_indices:
