@@ -153,6 +153,8 @@ position = Vector2(265, 201)
 [node name="platformer_player" parent="." instance=ExtResource("3_unnub")]
 position = Vector2(154, 88)
 
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(158, 119)
 zoom = Vector2(2.5, 2.5)
