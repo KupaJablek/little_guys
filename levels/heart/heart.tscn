@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://drntt5wc3apjq"]
+[gd_scene load_steps=16 format=3 uid="uid://drntt5wc3apjq"]
 
 [ext_resource type="Texture2D" uid="uid://dp1wgmudfnnuc" path="res://resources/heart/heart_dance_pad.png" id="1_oogt8"]
 [ext_resource type="Script" uid="uid://bg7t5uk0a2um6" path="res://levels/heart/heart.gd" id="1_tvftf"]
 [ext_resource type="AudioStream" uid="uid://bgfdr5yd0knxn" path="res://resources/Audio/Music/heart.ogg" id="3_x1lid"]
 [ext_resource type="Texture2D" uid="uid://cg51jxhytn1ct" path="res://resources/heart/little_guy_dance.png" id="4_7rhoi"]
 [ext_resource type="Script" uid="uid://bk3nvnvsaglbx" path="res://levels/heart/heart_rythm.gd" id="5_oau7h"]
+[ext_resource type="Texture2D" uid="uid://bag17yl7pfx85" path="res://resources/heart/heart_arrows.png" id="6_mbqlm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rhoi"]
 atlas = ExtResource("4_7rhoi")
@@ -61,7 +62,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dance",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -79,7 +80,9 @@ animations = [{
 script = ExtResource("1_tvftf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(477, 210)
+texture_filter = 1
+position = Vector2(480, 360)
+scale = Vector2(3, 3)
 texture = ExtResource("1_oogt8")
 
 [node name="HeartMusic" type="AudioStreamPlayer" parent="."]
@@ -87,14 +90,44 @@ stream = ExtResource("3_x1lid")
 autoplay = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(480, 368)
+scale = Vector2(2.0625, 2.0625)
 sprite_frames = SubResource("SpriteFrames_f504h")
 animation = &"dance"
 frame = 3
-frame_progress = 0.1649
+frame_progress = 0.241988
 
 [node name="HeartRythm" type="Timer" parent="."]
 autostart = true
 script = ExtResource("5_oau7h")
 metadata/_custom_type_script = "uid://bk3nvnvsaglbx"
+
+[node name="Arrow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(632, 432)
+scale = Vector2(1.625, 1.625)
+texture = ExtResource("6_mbqlm")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Arrow3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(480, 528)
+scale = Vector2(2.32031, 2.32031)
+texture = ExtResource("6_mbqlm")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Arrow2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(328, 432)
+scale = Vector2(1.625, 1.625)
+texture = ExtResource("6_mbqlm")
+hframes = 2
+vframes = 2
+frame = 3
 
 [connection signal="timeout" from="HeartRythm" to="HeartRythm" method="_on_heart_rythm_timeout"]
