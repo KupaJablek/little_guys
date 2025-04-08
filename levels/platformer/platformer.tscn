@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://wtv8uf34yfhg"]
+[gd_scene load_steps=14 format=4 uid="uid://wtv8uf34yfhg"]
 
 [ext_resource type="Texture2D" uid="uid://pop6wkq4v2l2" path="res://resources/lungs.png" id="1_sb63h"]
 [ext_resource type="Script" uid="uid://b3f4wowljsta0" path="res://levels/platformer/platformer.gd" id="1_tjjl6"]
 [ext_resource type="Texture2D" uid="uid://drq0mty41qi1m" path="res://resources/Lungs/lungs_tileset.png" id="2_1d3vj"]
 [ext_resource type="PackedScene" uid="uid://5dxil5xugwwg" path="res://entities/player/platformer_player.tscn" id="3_unnub"]
 [ext_resource type="PackedScene" uid="uid://p0oq5myp62nu" path="res://entities/platformer/deoxygenated_cell.tscn" id="5_sb7ts"]
+[ext_resource type="PackedScene" uid="uid://dypb3bhkf6qw2" path="res://entities/platformer/oxygenated_cell.tscn" id="6_dxts3"]
 [ext_resource type="PackedScene" uid="uid://crlxp32gad7qq" path="res://entities/platformer/oxygen_depot.tscn" id="6_xl7ot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_unnub"]
@@ -186,6 +187,8 @@ position = Vector2(57, 186)
 
 [node name="oxygen_depot" parent="." instance=ExtResource("6_xl7ot")]
 position = Vector2(265, 201)
+
+[node name="oxygenated_cell" parent="." instance=ExtResource("6_dxts3")]
 
 [node name="platformer_player" parent="." instance=ExtResource("3_unnub")]
 position = Vector2(154, 88)

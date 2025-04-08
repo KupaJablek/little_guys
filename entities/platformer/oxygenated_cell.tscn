@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dypb3bhkf6qw2"]
+
+[ext_resource type="Texture2D" uid="uid://drq0mty41qi1m" path="res://resources/Lungs/lungs_tileset.png" id="1_tawk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88kfn"]
+atlas = ExtResource("1_tawk2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x05qy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88kfn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="oxygenated_cell" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_x05qy")
