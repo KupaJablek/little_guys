@@ -144,6 +144,43 @@ tile_set = SubResource("TileSet_sb7ts")
 tile_map_data = PackedByteArray("AAAGAAYAAAAEAAEAAAAGAAcAAAAEAAEAAAAGAAgAAAAEAAEAAAAGAAkAAAAEAAEAAAAGAAoAAAAEAAEAAAAGAAsAAAAEAAEAAAAFAAUAAAAEAAEAAAAFAAQAAAAEAAEAAAANAAQAAAAEAAEAAAANAAUAAAAEAAEAAAANAAYAAAAEAAEAAAANAAcAAAAEAAEAAAANAAgAAAAEAAEAAAANAAkAAAAEAAEAAAANAAoAAAAEAAEAAAANAAsAAAAEAAEAAAANAAwAAAAEAAEAAAA=")
 tile_set = SubResource("TileSet_n2xr1")
 
+[node name="cell_spawns" type="Node2D" parent="."]
+
+[node name="spawn1" type="Node2D" parent="cell_spawns"]
+position = Vector2(231, 203)
+
+[node name="spawn2" type="Node2D" parent="cell_spawns"]
+position = Vector2(217, 57)
+
+[node name="spawn3" type="Node2D" parent="cell_spawns"]
+position = Vector2(234, 90)
+
+[node name="spawn4" type="Node2D" parent="cell_spawns"]
+position = Vector2(265, 202)
+
+[node name="spawn5" type="Node2D" parent="cell_spawns"]
+position = Vector2(255, 90)
+
+[node name="spawn6" type="Node2D" parent="cell_spawns"]
+position = Vector2(216, 158)
+
+[node name="oxygen_spawns" type="Node2D" parent="."]
+
+[node name="spawn1" type="Node2D" parent="oxygen_spawns"]
+position = Vector2(88, 57)
+
+[node name="spawn2" type="Node2D" parent="oxygen_spawns"]
+position = Vector2(86, 187)
+
+[node name="spawn3" type="Node2D" parent="oxygen_spawns"]
+position = Vector2(119, 91)
+
+[node name="spawn4" type="Node2D" parent="oxygen_spawns"]
+position = Vector2(56, 189)
+
+[node name="spawn5" type="Node2D" parent="oxygen_spawns"]
+position = Vector2(105, 150)
+
 [node name="deoxygenated_cell" parent="." instance=ExtResource("5_sb7ts")]
 position = Vector2(57, 186)
 
