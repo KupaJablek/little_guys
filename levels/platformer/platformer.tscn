@@ -207,3 +207,4 @@ position = Vector2(154, 88)
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_dxts3")
 autoplay = true
+parameters/looping = true
