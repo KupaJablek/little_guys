@@ -9,7 +9,7 @@ extends Node2D
 @onready var oxygen_spawns : Array[Node] = $oxygen_spawns.get_children()
 @onready var remaining_value: Label = $Value
 
-@export var oxygen_needed : int = 10
+@export var oxygen_needed : int = 3
 
 var is_active : bool = true
 var cells_oxygenated : int = 0
@@ -42,11 +42,12 @@ func _physics_process(delta: float) -> void:
 				deoxygenated_cell.show() #Cell appears in new area
 				oxygenated_cell.self_modulate.a = 1.0 #Make the oxygenated cell visible
 				
-				remaining_value.text = str(oxygen_needed - cells_oxygenated)
 				
 				if cells_oxygenated == oxygen_needed:
 					lung_complete.emit()
 					cells_oxygenated = 0 #Reset cell counter
+	
+	remaining_value.text = str(oxygen_needed - cells_oxygenated)
 	
 	#If oxygenated cell is visible, make it slowly disappear and rise
 	if oxygenated_cell.self_modulate.a > 0.0:
