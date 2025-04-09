@@ -14,9 +14,8 @@ var just_started_climbing : bool = false
 var can_move : bool = true
 
 var has_cell : bool = false
-signal cell_gathered
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_on_ladder:
 		climb()
 	

@@ -5,7 +5,7 @@ extends Control
 @onready var rhythm_game = $Heart/HBoxContainer/heart_monitor/SubViewportContainer/SubViewport/Heart
 @onready var action_list = $Action
 @onready var success_sound : AudioStreamPlayer = $GameSuccess
-@onready var fail_sound : AudioStreamPlayer = $GameFail
+@onready var fail_sound : AudioStreamPlayer = $TaskFail
 @onready var button_sound : AudioStreamPlayer = $ButtonPress
 
 func _ready() -> void:

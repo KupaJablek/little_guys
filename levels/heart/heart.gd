@@ -40,7 +40,7 @@ func _ready() -> void:
 	down_spawn = arrow_spawns[2]
 	right_spawn = arrow_spawns[3]
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_arrows()
 	
 	if is_active:
@@ -133,7 +133,7 @@ func _on_heart_rythm_spawn_arrow() -> void:
 		new_arrow.set_sprite_frame(sprite_right)
 
 
-func _on_missed_beat_area_body_entered(body: Node2D) -> void:
+func _on_missed_beat_area_body_entered(_body: Node2D) -> void:
 	if is_active: #Only play missed beat animation when player is in control
 		player_sprite.animation = "fall"
 		player_sprite.frame = randi() % 2
