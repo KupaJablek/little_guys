@@ -251,7 +251,6 @@ hframes = 2
 vframes = 2
 frame = 3
 
-[connection signal="area_exited" from="Sprite2D/ScreenOverlay/ScreenArrows/LArrow" to="." method="_on_l_arrow_area_exited"]
 [connection signal="body_entered" from="MissedBeatArea" to="." method="_on_missed_beat_area_body_entered"]
 [connection signal="spawn_arrow" from="HeartRythm" to="." method="_on_heart_rythm_spawn_arrow"]
 [connection signal="timeout" from="HeartRythm" to="HeartRythm" method="_on_heart_rythm_timeout"]
