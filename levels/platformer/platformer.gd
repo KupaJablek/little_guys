@@ -53,11 +53,11 @@ func _physics_process(delta: float) -> void:
 		#Move oxygenated cell to overlap with oxygen depot after disappearing, if not already there
 		oxygenated_cell.position = oxygen_depot.position
 
-func set_active_state(active_state : bool) -> void:
-	is_active = active_state
-	player.can_move = active_state
+func set_active_state(state : bool) -> void:
+	is_active = state
+	player.can_move = state
 	
-	if active_state:
+	if state:
 		bg_music.volume_db = 0.0 #Unmute music when window is active
 	else:
 		bg_music.volume_db = -80.0 #Mute music when window is not active
