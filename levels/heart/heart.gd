@@ -113,7 +113,7 @@ func set_active_state(state : bool) -> void:
 	else:
 		bg_music.volume_db = -80.0
 
-func _on_heart_rythm_spawn_arrow() -> void:
+func _on_heart_rythm_timeout() -> void:
 	#Create a new rhythm arrow, add it to the array of active arrows
 	var new_arrow : CharacterBody2D = rhythm_arrow.instantiate()
 	all_arrows.append(new_arrow)

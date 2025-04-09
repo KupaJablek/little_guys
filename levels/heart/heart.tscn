@@ -252,5 +252,4 @@ vframes = 2
 frame = 3
 
 [connection signal="body_entered" from="MissedBeatArea" to="." method="_on_missed_beat_area_body_entered"]
-[connection signal="spawn_arrow" from="HeartRythm" to="." method="_on_heart_rythm_spawn_arrow"]
-[connection signal="timeout" from="HeartRythm" to="HeartRythm" method="_on_heart_rythm_timeout"]
+[connection signal="timeout" from="HeartRythm" to="." method="_on_heart_rythm_timeout"]
