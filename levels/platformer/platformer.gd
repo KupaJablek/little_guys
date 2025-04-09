@@ -12,8 +12,8 @@ extends Node2D
 
 var is_active : bool = true
 var cells_oxygenated : int = 0
-var cell_fade_speed : int = 1.0
-var cell_rise_speed : int = 10.0
+var cell_fade_speed : float = 1.0
+var cell_rise_speed : float = 10.0
 
 signal lung_complete
 
