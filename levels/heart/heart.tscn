@@ -96,6 +96,8 @@ animations = [{
 
 [node name="Heart" type="Node2D"]
 script = ExtResource("1_tvftf")
+arrow_speed = 180.0
+arrows_to_win = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
