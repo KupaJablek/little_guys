@@ -49,10 +49,14 @@ class ActionData:
 		objectives = _actions
 
 static var ACTIONS: Array = [
-	ActionData.new("Run", 120, [Type.LUNGS, Type.LUNGS, Type.HEART]),
-	ActionData.new("Study", 120, [Type.BRAIN, Type.BRAIN]),
-	#Action.new("", 120, [])
-	##TODO Add more.. Not very creative right now.. -Robert
+	ActionData.new("Run", 150, [Type.LUNGS, Type.LUNGS, Type.HEART]),
+	ActionData.new("Study", 150, [Type.BRAIN, Type.BRAIN, Type.BRAIN]),
+	ActionData.new("Scary Movie", 180, [Type.HEART, Type.HEART, Type.BRAIN]),
+	ActionData.new("Meditate", 210, [Type.LUNGS, Type.BRAIN, Type.LUNGS]),
+	ActionData.new("Dance", 120, [Type.LUNGS, Type.HEART, Type.BRAIN]),
+	ActionData.new("Video Game", 90, [Type.BRAIN, Type.HEART, Type.BRAIN]),
+	ActionData.new("Heart Attack", 75, [Type.HEART, Type.HEART, Type.HEART]),
+	ActionData.new("Mountain Hike", 150, [Type.LUNGS, Type.LUNGS, Type.LUNGS]),
 ]
 
 
