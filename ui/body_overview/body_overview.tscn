@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c76ti3otswpug"]
+[gd_scene load_steps=17 format=4 uid="uid://c76ti3otswpug"]
 
 [ext_resource type="Texture2D" uid="uid://4jakgcewot30" path="res://resources/body_overview/background.png" id="1_7r77e"]
 [ext_resource type="Script" uid="uid://b8y80ufu0msnr" path="res://ui/body_overview/body_overview.gd" id="1_dqos1"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://b4clnwfxiffbj" path="res://resources/body_overview/lungs_indicator.png" id="8_nnyly"]
 [ext_resource type="Texture2D" uid="uid://bxqo7w1lpjfue" path="res://resources/body_overview/heart_indicator.png" id="9_nnyly"]
 [ext_resource type="PackedScene" uid="uid://dgt8vmbjpr0uk" path="res://ui/action/action.tscn" id="13_qigjl"]
+[ext_resource type="AudioStream" uid="uid://q2m3yrc7vtnt" path="res://resources/Audio/Sound/win.wav" id="14_1n70m"]
+[ext_resource type="AudioStream" uid="uid://b5dv47xvip82k" path="res://resources/Audio/Sound/lose.wav" id="15_00m3x"]
+[ext_resource type="AudioStream" uid="uid://cyy7n4icut1eg" path="res://resources/Audio/Sound/button.wav" id="16_78uo6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -219,6 +222,15 @@ offset_left = 530.0
 offset_top = 407.0
 offset_right = 680.0
 offset_bottom = 532.0
+
+[node name="GameSuccess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_1n70m")
+
+[node name="TaskFail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_00m3x")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_78uo6")
 
 [connection signal="pressed" from="Brain/HBoxContainer/brain_button" to="." method="_on_brain_button_pressed"]
 [connection signal="lung_complete" from="Lungs/HBoxContainer/lungs_monitor/SubViewportContainer/SubViewport/platformer" to="." method="_on_platformer_lung_complete"]
