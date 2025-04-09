@@ -32,6 +32,8 @@ var up_spawn : Node
 var down_spawn : Node
 var right_spawn : Node
 
+signal heart_complete
+
 func _ready() -> void:
 	left_spawn = arrow_spawns[0]
 	up_spawn = arrow_spawns[1]
@@ -79,6 +81,11 @@ func _physics_process(delta: float) -> void:
 	#Swap arrow array with active arrow array, then empty active arrow array
 	all_arrows = active_arrows
 	active_arrows = []
+	
+	#Check for victory condition
+	if success_counter == arrows_to_win:
+		heart_complete.emit()
+		success_counter = 0
 
 func move_arrows() -> void:
 	var arrow_index = 0
