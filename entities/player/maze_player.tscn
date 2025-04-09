@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4rohoe8g8kib"]
 
-[ext_resource type="Script" uid="uid://dgnfv5hkyp2fx" path="res://entities/player/maze_player.gd" id="1_ext3g"]
+[ext_resource type="Script" path="res://entities/player/maze_player.gd" id="1_ext3g"]
 [ext_resource type="Texture2D" uid="uid://wghh2c252pn0" path="res://resources/brain_tileset.png" id="2_t08lu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncif1"]
@@ -51,5 +51,5 @@ animation = &"move"
 frame_progress = 0.847946
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 shape = SubResource("CircleShape2D_cupc5")

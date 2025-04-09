@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://drntt5wc3apjq"]
+[gd_scene load_steps=25 format=3 uid="uid://drntt5wc3apjq"]
 
 [ext_resource type="Texture2D" uid="uid://dp1wgmudfnnuc" path="res://resources/heart/heart_dance_pad.png" id="1_oogt8"]
 [ext_resource type="Script" uid="uid://bg7t5uk0a2um6" path="res://levels/heart/heart.gd" id="1_tvftf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bk3nvnvsaglbx" path="res://levels/heart/heart_rythm.gd" id="5_oau7h"]
 [ext_resource type="Texture2D" uid="uid://bag17yl7pfx85" path="res://resources/heart/heart_arrows.png" id="6_mbqlm"]
 [ext_resource type="Texture2D" uid="uid://bfxyvpabwygal" path="res://resources/heart/heart_dance_pad_transparent_screen.png" id="6_urcd8"]
+[ext_resource type="FontFile" uid="uid://bm6q87o23fb2x" path="res://resources/font/arcadeclassic.regular.ttf" id="10_4685n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwhxw"]
 size = Vector2(32, 10)
@@ -111,7 +112,7 @@ scale = Vector2(0.496875, 0.304167)
 texture = ExtResource("3_mwhxw")
 
 [node name="ScreenHeart" type="Sprite2D" parent="Sprite2D/ScreenOverlay"]
-position = Vector2(0, -50)
+position = Vector2(-104.319, -45.4794)
 scale = Vector2(1.20755, 1.9726)
 texture = ExtResource("4_urcd8")
 
@@ -212,6 +213,7 @@ texture = ExtResource("6_urcd8")
 
 [node name="HeartMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_x1lid")
+volume_db = -80.0
 autoplay = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -252,6 +254,24 @@ texture = ExtResource("6_mbqlm")
 hframes = 2
 vframes = 2
 frame = 3
+
+[node name="Label" type="Label" parent="."]
+offset_left = 393.0
+offset_top = 41.0
+offset_right = 610.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("10_4685n")
+theme_override_font_sizes/font_size = 42
+text = "Remaining:"
+
+[node name="Value" type="Label" parent="."]
+offset_left = 622.0
+offset_top = 53.0
+offset_right = 683.0
+offset_bottom = 97.0
+theme_override_fonts/font = ExtResource("10_4685n")
+theme_override_font_sizes/font_size = 42
+text = "5"
 
 [connection signal="body_entered" from="MissedBeatArea" to="." method="_on_missed_beat_area_body_entered"]
 [connection signal="timeout" from="HeartRythm" to="." method="_on_heart_rythm_timeout"]

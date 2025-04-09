@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://wtv8uf34yfhg"]
+[gd_scene load_steps=16 format=4 uid="uid://wtv8uf34yfhg"]
 
 [ext_resource type="Texture2D" uid="uid://pop6wkq4v2l2" path="res://resources/lungs.png" id="1_sb63h"]
 [ext_resource type="Script" uid="uid://b3f4wowljsta0" path="res://levels/platformer/platformer.gd" id="1_tjjl6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dypb3bhkf6qw2" path="res://entities/platformer/oxygenated_cell.tscn" id="6_dxts3"]
 [ext_resource type="PackedScene" uid="uid://crlxp32gad7qq" path="res://entities/platformer/oxygen_depot.tscn" id="6_xl7ot"]
 [ext_resource type="AudioStream" uid="uid://nthi8nniej33" path="res://resources/Audio/Music/lungs.ogg" id="8_dxts3"]
+[ext_resource type="FontFile" uid="uid://bm6q87o23fb2x" path="res://resources/font/arcadeclassic.regular.ttf" id="9_k8mkg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_unnub"]
 texture = ExtResource("2_1d3vj")
@@ -207,5 +208,24 @@ position = Vector2(154, 88)
 
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_dxts3")
+volume_db = -80.0
 autoplay = true
 parameters/looping = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 340.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("9_k8mkg")
+theme_override_font_sizes/font_size = 20
+text = "Remaining"
+
+[node name="Value" type="Label" parent="."]
+offset_left = 289.0
+offset_top = 24.0
+offset_right = 318.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("9_k8mkg")
+theme_override_font_sizes/font_size = 20
+text = "10"

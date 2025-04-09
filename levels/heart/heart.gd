@@ -10,9 +10,12 @@ class_name Heart
 @onready var missed_beat_area : Area2D = $MissedBeatArea
 @onready var player_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var bg_music : AudioStreamPlayer = $HeartMusic
+@onready var heart_rythm: HeartRythm = $HeartRythm
+@onready var remaining_value: Label = $Value
 
 @export var arrow_speed : float = 100.0
 @export var arrows_to_win : int = 10
+
 
 var rhythm_arrow = preload("res://entities/heart/rhythm_arrow.tscn")
 var success_counter : int = 0
@@ -34,11 +37,13 @@ var right_spawn : Node
 
 signal heart_complete
 
+
 func _ready() -> void:
 	left_spawn = arrow_spawns[0]
 	up_spawn = arrow_spawns[1]
 	down_spawn = arrow_spawns[2]
 	right_spawn = arrow_spawns[3]
+
 
 func _physics_process(_delta: float) -> void:
 	move_arrows()
@@ -73,6 +78,7 @@ func _physics_process(_delta: float) -> void:
 				player_sprite.frame = randi() % 6
 				success_counter += 1
 	
+	remaining_value.text = str(arrows_to_win - success_counter)
 	#Free despawning arrows from the queue
 	for i in despawn_indices:
 		all_arrows[i].queue_free()
@@ -86,6 +92,7 @@ func _physics_process(_delta: float) -> void:
 	if success_counter == arrows_to_win:
 		heart_complete.emit()
 		success_counter = 0
+
 
 func move_arrows() -> void:
 	var arrow_index = 0
@@ -105,6 +112,7 @@ func move_arrows() -> void:
 		
 		arrow_index += 1
 
+
 func set_active_state(state : bool) -> void:
 	is_active = state
 	#Mute game if inactive, unmute if active
@@ -112,6 +120,9 @@ func set_active_state(state : bool) -> void:
 		bg_music.volume_db = 0.0
 	else:
 		bg_music.volume_db = -80.0
+	heart_rythm.paused = not state
+	set_physics_process(state)
+
 
 func _on_heart_rythm_timeout() -> void:
 	#Create a new rhythm arrow, add it to the array of active arrows

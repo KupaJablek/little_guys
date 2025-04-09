@@ -8,6 +8,7 @@ class_name Action
 
 
 signal completed
+signal failed
 
 
 enum Type {
@@ -20,7 +21,9 @@ const TYPE_MAPPING: Dictionary = {
 	Type.HEART: preload("res://resources/body_overview/heart_indicator.png"),
 	Type.LUNGS: preload("res://resources/body_overview/lungs_indicator.png")
 }
+
 const ACTION_COMPONENT = preload("res://ui/action/action_component.tscn")
+
 
 @onready var action_label: Label = $Name
 @onready var objective_container: HBoxContainer = $Objectives
@@ -33,6 +36,23 @@ var completed_count: int = 0:
 		completed_count = value
 		if completed_count == len(objectives):
 			completed.emit()
+
+class ActionData:
+	var action_name: String
+	var time: float
+	var objectives: Array[Type]
+	
+	func _init(_action_name: String, _time: float, _actions: Array[Type]):
+		action_name = _action_name
+		time = _time
+		objectives = _actions
+
+static var ACTIONS: Array = [
+	ActionData.new("Run", 120, [Type.LUNGS, Type.LUNGS, Type.HEART]),
+	ActionData.new("Study", 120, [Type.BRAIN, Type.BRAIN]),
+	#Action.new("", 120, [])
+	##TODO Add more.. Not very creative right now.. -Robert
+]
 
 
 func _ready() -> void:
@@ -53,7 +73,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	failed.emit()
 
 
 func handle_objective_completion(objective: Type) -> bool: #Return wether the objective was handled or not

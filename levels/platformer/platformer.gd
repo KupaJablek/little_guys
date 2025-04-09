@@ -7,6 +7,7 @@ extends Node2D
 @onready var bg_music : AudioStreamPlayer = $background_music
 @onready var cell_spawns : Array[Node] = $cell_spawns.get_children()
 @onready var oxygen_spawns : Array[Node] = $oxygen_spawns.get_children()
+@onready var remaining_value: Label = $Value
 
 @export var oxygen_needed : int = 10
 
@@ -17,6 +18,7 @@ var cell_rise_speed : float = 10.0
 
 signal lung_complete
 
+
 func _ready() -> void:
 	bg_music.play()
 	#Move deoxygenated cell and oxygen depot to random spawn
@@ -25,6 +27,7 @@ func _ready() -> void:
 	oxygenated_cell.position = oxygen_depot.position
 	#Make oxygenated cell start invisible
 	oxygenated_cell.self_modulate.a = 0.0
+
 
 func _physics_process(delta: float) -> void:
 	if is_active:
@@ -38,6 +41,8 @@ func _physics_process(delta: float) -> void:
 				change_spawns()
 				deoxygenated_cell.show() #Cell appears in new area
 				oxygenated_cell.self_modulate.a = 1.0 #Make the oxygenated cell visible
+				
+				remaining_value.text = str(oxygen_needed - cells_oxygenated)
 				
 				if cells_oxygenated == oxygen_needed:
 					lung_complete.emit()
@@ -53,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		#Move oxygenated cell to overlap with oxygen depot after disappearing, if not already there
 		oxygenated_cell.position = oxygen_depot.position
 
+
 func set_active_state(state : bool) -> void:
 	is_active = state
 	player.can_move = state
@@ -61,6 +67,7 @@ func set_active_state(state : bool) -> void:
 		bg_music.volume_db = 0.0 #Unmute music when window is active
 	else:
 		bg_music.volume_db = -80.0 #Mute music when window is not active
+
 
 func change_spawns() -> void:
 	#Pick a random cell and oxygen spawn from each array

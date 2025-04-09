@@ -13,7 +13,10 @@ config_version=5
 config/name="LittleGuys"
 run/main_scene="uid://b7l5l81klp00s"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.117647, 0.101961, 0.12549, 1)
+boot_splash/image="uid://l0aasxbmtull"
+config/icon="uid://c10t25p3rl6se"
+boot_splash/minimum_display_time=2000
 
 [display]
 

@@ -3,6 +3,9 @@ extends TileMapLayer
 class_name Maze
 
 
+signal completed
+
+
 @export var size: Vector2i #Must be ODD number
 @export var completion_tile_location: Vector2i
 
@@ -11,14 +14,13 @@ class_name Maze
 @onready var checkpoints: TileMapLayer = $Checkpoints
 @onready var completion: Area2D = $Completion
 @onready var player: MazePlayer = $Player
+@onready var bg_music: AudioStreamPlayer = $AudioStreamPlayer
 
 var start: Vector2i
 var end: Vector2i
 var visited: Array[Vector2i] = []
 var paths: Array[Vector2i] = [] #List of path positions
 var is_active: bool = false
-
-var is_active : bool = true # Used to prevent player interaction when another game is active
 
 
 func _ready():
@@ -68,6 +70,8 @@ func generate_maze() -> void:
 
 	if start not in paths:
 		start = paths[0]
+	if end not in paths:
+		end = paths[-1]
 	
 	set_cells_terrain_connect(paths, 0, 0)
 	for x in size.x:
@@ -82,12 +86,12 @@ func generate_maze() -> void:
 
 func set_active_state(state : bool) -> void:
 	is_active = state
+	bg_music.volume_db = 0.0 if state else -80.0
+	player.set_physics_process(state)
 
 
 func _on_completion_entered(body: Node2D) -> void:
 	if not body is MazePlayer:
 		return
 	generate_maze()
-	#Play win sound
-	#Clear objective action
-	#Add dopamine
+	completed.emit()

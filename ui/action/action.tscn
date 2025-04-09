@@ -4,12 +4,12 @@
 [ext_resource type="FontFile" uid="uid://bm6q87o23fb2x" path="res://resources/font/arcadeclassic.regular.ttf" id="2_fl4qp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj2i6"]
-bg_color = Color(0.709828, 0.959779, 0.994474, 1)
-border_width_left = 15
-border_width_top = 15
-border_width_right = 15
-border_width_bottom = 15
-border_color = Color(0.115908, 0.791978, 0.864986, 1)
+bg_color = Color(0.968627, 0.980392, 0.85098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.909804, 0.921569, 0.380392, 1)
 border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -31,7 +31,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="Action" type="PanelContainer"]
-custom_minimum_size = Vector2(150, 125)
+custom_minimum_size = Vector2(150, 75)
 offset_right = 61.0
 offset_bottom = 70.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yj2i6")
@@ -49,7 +49,7 @@ theme_override_font_sizes/font_size = 20
 text = "Breathe"
 
 [node name="Objectives" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 8
