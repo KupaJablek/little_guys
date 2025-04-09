@@ -2,6 +2,10 @@ extends Control
 class_name MainMenu
 
 
+func _ready():
+	get_tree().paused = false
+
+
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://ui/body_overview/body_overview.tscn")
 	print("Start pressed")

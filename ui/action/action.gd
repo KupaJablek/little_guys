@@ -9,6 +9,7 @@ class_name Action
 
 signal completed
 signal failed
+signal hurry
 
 
 enum Type {
@@ -69,6 +70,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if time_remaining.value >= 10 and (timer.time_left / timer.wait_time) * 100.0 < 10:
+		hurry.emit()
 	time_remaining.value = (timer.time_left / timer.wait_time) * 100.0
 
 

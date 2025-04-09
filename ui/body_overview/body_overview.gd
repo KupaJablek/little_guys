@@ -16,6 +16,7 @@ const IAction = preload("res://ui/action/action.tscn")
 @onready var heart_shader: ShaderMaterial = $big_guy/heart.material
 @onready var action_list: VBoxContainer = $ActionList
 @onready var score_value: Label = $ScoreValue
+@onready var hurry_sound: AudioStreamPlayer = $Hurry
 
 
 var score: int = 0:
@@ -31,6 +32,7 @@ func _ready() -> void:
 	platformer_game.set_active_state(false)
 	rhythm_game.set_active_state(false)
 	score = 0
+	spawn_action()
 
 
 func _on_brain_button_pressed() -> void:
@@ -85,14 +87,19 @@ func handle_action_completion(type: Action.Type):
 
 func _on_action_spawner_timeout() -> void:
 	if action_list.get_child_count() < 3:
-		var action_instance: Action = IAction.instantiate()
-		var action_data: Action.ActionData = Action.ACTIONS.pick_random()
-		action_instance.action_name = action_data.action_name
-		action_instance.time = action_data.time
-		action_instance.objectives = action_data.objectives
-		action_instance.completed.connect(action_completed.bind(action_instance))
-		action_instance.failed.connect(action_failed.bind(action_instance))
-		action_list.add_child(action_instance)
+		spawn_action()
+
+
+func spawn_action():
+	var action_instance: Action = IAction.instantiate()
+	var action_data: Action.ActionData = Action.ACTIONS.pick_random()
+	action_instance.action_name = action_data.action_name
+	action_instance.time = action_data.time
+	action_instance.objectives = action_data.objectives
+	action_instance.completed.connect(action_completed.bind(action_instance))
+	action_instance.failed.connect(action_failed.bind(action_instance))
+	action_instance.hurry.connect(func(): hurry_sound.play())
+	action_list.add_child(action_instance)
 
 
 func action_completed(action: Action):
@@ -103,3 +110,4 @@ func action_completed(action: Action):
 func action_failed(action: Action):
 	score -= 5
 	action.queue_free()
+	fail_sound.play()

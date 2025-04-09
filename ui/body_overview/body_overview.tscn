@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://c76ti3otswpug"]
+[gd_scene load_steps=25 format=4 uid="uid://c76ti3otswpug"]
 
 [ext_resource type="Texture2D" uid="uid://4jakgcewot30" path="res://resources/body_overview/background.png" id="1_7r77e"]
 [ext_resource type="Script" uid="uid://b8y80ufu0msnr" path="res://ui/body_overview/body_overview.gd" id="1_dqos1"]
@@ -17,6 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://q2m3yrc7vtnt" path="res://resources/Audio/Sound/win.wav" id="14_1n70m"]
 [ext_resource type="AudioStream" uid="uid://b5dv47xvip82k" path="res://resources/Audio/Sound/lose.wav" id="15_00m3x"]
 [ext_resource type="AudioStream" uid="uid://cyy7n4icut1eg" path="res://resources/Audio/Sound/button.wav" id="16_78uo6"]
+[ext_resource type="Script" uid="uid://lp61umya65u2" path="res://ui/body_overview/pause.gd" id="18_d5udi"]
+[ext_resource type="Texture2D" uid="uid://cck4b5syc75ny" path="res://resources/UI/button_white.png" id="18_ntfat"]
+[ext_resource type="Script" uid="uid://cc3y8j121b3yc" path="res://ui/hover_button.gd" id="19_d5udi"]
+[ext_resource type="AudioStream" uid="uid://4uru68dm6onu" path="res://resources/Audio/Sound/hurryup.wav" id="21_sqwhq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ntfat"]
 shader = ExtResource("11_78uo6")
@@ -87,7 +91,7 @@ size = Vector2i(338, 240)
 render_target_update_mode = 4
 
 [node name="Maze" parent="Brain/brain_monitor/SubViewportContainer/SubViewport" instance=ExtResource("3_tvica")]
-tile_map_data = PackedByteArray("AAAAAAAAAAAEAAIAAAAAAAIAAAADAAMAAAAAAAQAAAAEAAUAAAAAAAUAAAAEAAUAAAAAAAYAAAACAAcAAAAAAAgAAAAEAAUAAAAAAAoAAAAEAAUAAAAAAAwAAAADAAQAAAAAAA4AAAAEAAIAAAACAAAAAAADAAUAAAACAAIAAAAEAAMAAAACAAQAAAAFAAMAAAACAAYAAAAEAAMAAAACAAgAAAADAAQAAAACAAoAAAAEAAIAAAACAAwAAAAEAAMAAAACAA4AAAADAAcAAAAEAAAAAAAEAAMAAAAEAAIAAAAEAAUAAAAEAAQAAAAEAAUAAAAEAAYAAAAEAAUAAAAEAAgAAAAEAAQAAAAEAAoAAAADAAYAAAAEAAwAAAADAAQAAAAEAA4AAAADAAUAAAAFAA4AAAADAAUAAAAGAAAAAAADAAMAAAAGAAIAAAAFAAMAAAAGAAQAAAADAAMAAAAGAAYAAAACAAcAAAAGAAgAAAAEAAUAAAAGAAoAAAAEAAQAAAAGAAwAAAAGAAIAAAAGAA4AAAADAAUAAAAIAAAAAAADAAYAAAAIAAIAAAAEAAUAAAAIAAQAAAAEAAQAAAAIAAYAAAAEAAMAAAAIAAgAAAAEAAUAAAAIAAoAAAADAAQAAAAIAAwAAAADAAMAAAAIAA4AAAAEAAQAAAAKAAAAAAAEAAMAAAAKAAIAAAADAAQAAAAKAAQAAAAFAAEAAAAKAAYAAAACAAcAAAAKAAgAAAAFAAMAAAAKAAoAAAAEAAMAAAAKAAwAAAAEAAQAAAAKAA4AAAAEAAIAAAAMAAAAAAAEAAIAAAAMAAIAAAAEAAMAAAAMAAQAAAADAAQAAAAMAAYAAAAEAAMAAAAMAAgAAAACAAcAAAAMAAoAAAAFAAMAAAAMAAwAAAADAAMAAAAMAA4AAAADAAcAAAAOAAAAAAADAAYAAAAOAAIAAAADAAQAAAAOAAQAAAAEAAMAAAAOAAYAAAADAAQAAAAOAAgAAAADAAYAAAAOAAoAAAAEAAUAAAAOAAwAAAAEAAQAAAAOAA4AAAADAAUAAAAPAAAAAAADAAUAAAAQAAAAAAADAAUAAAAQAAIAAAAEAAMAAAAQAAQAAAAEAAUAAAAQAAYAAAAEAAQAAAAQAAgAAAAGAAIAAAAQAAoAAAADAAMAAAAQAAwAAAAEAAUAAAAQAA4AAAADAAcAAAASAAAAAAAEAAMAAAASAAIAAAADAAQAAAASAAQAAAADAAMAAAASAAYAAAAEAAUAAAASAAgAAAAEAAUAAAASAAoAAAAEAAQAAAASAAwAAAADAAMAAAASAA4AAAAEAAQAAAAUAAAAAAAFAAEAAAAUAAIAAAACAAYAAAAUAAQAAAAEAAQAAAAUAAYAAAAFAAEAAAAUAAgAAAAEAAUAAAAUAAoAAAAEAAUAAAAUAAwAAAACAAYAAAAUAA0AAAAEAAUAAAAUAA4AAAAFAAMAAAAAAAsAAAAEAAUAAAASAAUAAAAEAAUAAAAUAAMAAAAEAAUAAAADAA4AAAADAAUAAAARAAoAAAADAAUAAAAIAAMAAAAEAAUAAAAUAAEAAAAEAAUAAAADAAAAAAADAAUAAAAGAAEAAAAEAAUAAAANAA4AAAADAAUAAAASAAcAAAAEAAUAAAAAAAkAAAAEAAUAAAABAAIAAAADAAUAAAAEAAsAAAAEAAUAAAAGAAUAAAAEAAUAAAAJAAAAAAADAAUAAAAKAAcAAAAEAAUAAAANAAQAAAADAAUAAAANAAgAAAADAAUAAAAQAAMAAAAEAAUAAAARAAAAAAADAAUAAAARAA4AAAADAAUAAAATAAIAAAADAAUAAAAUAAsAAAAEAAUAAAAAAAMAAAAEAAUAAAABAAAAAAADAAUAAAABAAYAAAADAAUAAAACAAMAAAAEAAUAAAACAA0AAAAEAAUAAAADAAgAAAADAAUAAAADAAoAAAADAAUAAAAEAAUAAAAEAAUAAAAEAAcAAAAEAAUAAAAHAAYAAAADAAUAAAAIAAEAAAAEAAUAAAAIAAkAAAAEAAUAAAAIAA0AAAAEAAUAAAAKAAsAAAAEAAUAAAALAA4AAAADAAUAAAANAAwAAAADAAUAAAAOAAEAAAAEAAUAAAAOAAkAAAAEAAUAAAAPAAYAAAADAAUAAAAPAA4AAAADAAUAAAAQAAsAAAAEAAUAAAATAAQAAAADAAUAAAAUAAcAAAAEAAUAAAANAAAAAAADAAUAAAABAA4AAAADAAUAAAASAAkAAAAEAAUAAAASAA0AAAAEAAUAAAACAAcAAAAEAAUAAAAHAA4AAAADAAUAAAALAAIAAAADAAUAAAAQAA0AAAAEAAUAAAAEAAEAAAAEAAUAAAAGAAcAAAAEAAUAAAAHAAAAAAADAAUAAAAHAAQAAAADAAUAAAAJAAoAAAADAAUAAAAKAAEAAAAEAAUAAAALAAYAAAADAAUAAAAMAA0AAAAEAAUAAAAOAAUAAAAEAAUAAAAOAAsAAAAEAAUAAAAPAAgAAAADAAUAAAASAAEAAAAEAAUAAAAUAAkAAAAEAAUAAAAAAAcAAAAEAAUAAAABAAwAAAADAAUAAAAEAAMAAAAEAAUAAAAFAAoAAAADAAUAAAAFAAwAAAADAAUAAAAGAAkAAAAEAAUAAAAIAAcAAAAEAAUAAAAJAAwAAAADAAUAAAAKAAUAAAAEAAUAAAAMAAMAAAAEAAUAAAAMAAcAAAAEAAUAAAAMAAkAAAAEAAUAAAAPAAIAAAADAAUAAAAQAAUAAAAEAAUAAAATAAwAAAADAAUAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAEAAIAAAAAAAIAAAAFAAEAAAAAAAQAAAAEAAUAAAAAAAUAAAAEAAUAAAAAAAYAAAACAAcAAAAAAAgAAAAFAAMAAAAAAAoAAAADAAMAAAAAAAwAAAAEAAUAAAAAAA0AAAAEAAUAAAAAAA4AAAADAAQAAAACAAAAAAAEAAMAAAACAAIAAAAEAAUAAAACAAQAAAADAAQAAAACAAYAAAADAAYAAAACAAgAAAAEAAUAAAACAAoAAAAEAAQAAAACAAwAAAADAAMAAAACAA4AAAADAAcAAAAEAAAAAAAEAAIAAAAEAAIAAAADAAMAAAAEAAQAAAAEAAQAAAAEAAYAAAAEAAMAAAAEAAgAAAADAAQAAAAEAAoAAAADAAMAAAAEAAwAAAAEAAQAAAAEAA4AAAAGAAIAAAAGAAAAAAADAAUAAAAGAAIAAAADAAUAAAAGAAQAAAADAAMAAAAGAAYAAAAFAAMAAAAGAAgAAAADAAUAAAAGAAoAAAAEAAMAAAAGAAwAAAAEAAUAAAAGAA4AAAADAAQAAAAIAAAAAAADAAUAAAAIAAIAAAADAAUAAAAIAAQAAAAEAAMAAAAIAAYAAAAEAAUAAAAIAAgAAAACAAYAAAAIAAoAAAACAAcAAAAIAAwAAAAFAAMAAAAIAA4AAAADAAUAAAAKAAAAAAADAAYAAAAKAAIAAAAEAAQAAAAKAAQAAAADAAMAAAAKAAYAAAADAAQAAAAKAAgAAAAFAAEAAAAKAAoAAAAEAAQAAAAKAAwAAAADAAMAAAAKAA4AAAAEAAQAAAAMAAAAAAADAAUAAAAMAAIAAAADAAMAAAAMAAQAAAAEAAQAAAAMAAYAAAAEAAMAAAAMAAgAAAAEAAUAAAAMAAoAAAADAAQAAAAMAAwAAAAEAAMAAAAMAA4AAAADAAQAAAAOAAAAAAAEAAMAAAAOAAIAAAAEAAQAAAAOAAQAAAADAAMAAAAOAAYAAAAEAAUAAAAOAAgAAAADAAQAAAAOAAoAAAAEAAMAAAAOAAwAAAAEAAUAAAAOAA4AAAADAAcAAAAQAAAAAAAFAAEAAAAQAAIAAAADAAQAAAAQAAQAAAAEAAMAAAAQAAYAAAADAAQAAAAQAAgAAAAEAAMAAAAQAAoAAAADAAQAAAAQAAwAAAADAAMAAAAQAA4AAAAEAAQAAAASAAAAAAADAAMAAAASAAIAAAAEAAQAAAASAAQAAAADAAMAAAASAAYAAAAEAAQAAAASAAgAAAAEAAIAAAASAAoAAAADAAUAAAASAAwAAAADAAUAAAASAA4AAAAEAAIAAAAUAAAAAAAEAAMAAAAUAAIAAAAEAAUAAAAUAAQAAAACAAYAAAAUAAYAAAAEAAUAAAAUAAgAAAAEAAQAAAAUAAoAAAAEAAMAAAAUAAwAAAACAAYAAAAUAA0AAAAEAAUAAAAUAA4AAAAEAAQAAAAAAAsAAAAEAAUAAAAJAA4AAAADAAUAAAAHAAgAAAADAAUAAAASAAUAAAAEAAUAAAAUAAMAAAAEAAUAAAADAA4AAAADAAUAAAARAAoAAAADAAUAAAADAAwAAAADAAUAAAAUAAEAAAAEAAUAAAALAAAAAAADAAUAAAANAAIAAAADAAUAAAANAA4AAAADAAUAAAATAAAAAAADAAUAAAATAA4AAAADAAUAAAAEAAsAAAAEAAUAAAAFAAgAAAADAAUAAAAGAAUAAAAEAAUAAAAGAA0AAAAEAAUAAAAJAAAAAAADAAUAAAAKAA0AAAAEAAUAAAATAAgAAAADAAUAAAAUAAsAAAAEAAUAAAAAAAMAAAAEAAUAAAABAAAAAAADAAUAAAABAAYAAAADAAUAAAABAAoAAAADAAUAAAACAAMAAAAEAAUAAAACAA0AAAAEAAUAAAADAAQAAAADAAUAAAAEAAcAAAAEAAUAAAAFAAAAAAADAAUAAAAIAAkAAAAEAAUAAAANAAoAAAADAAUAAAAOAAEAAAAEAAUAAAAPAAQAAAADAAUAAAAPAA4AAAADAAUAAAAQAAkAAAAEAAUAAAARAAIAAAADAAUAAAARAAwAAAADAAUAAAATAAQAAAADAAUAAAATAAoAAAADAAUAAAAUAAcAAAAEAAUAAAANAAAAAAADAAUAAAABAA4AAAADAAUAAAACAAcAAAAEAAUAAAAHAA4AAAADAAUAAAAQAA0AAAAEAAUAAAAHAAAAAAADAAUAAAAHAAQAAAADAAUAAAAJAAoAAAADAAUAAAAKAAEAAAAEAAUAAAALAAYAAAADAAUAAAAMAA0AAAAEAAUAAAAOAAUAAAAEAAUAAAAOAAsAAAAEAAUAAAAPAAgAAAADAAUAAAASAAEAAAAEAAUAAAAAAAcAAAAEAAUAAAAEAAMAAAAEAAUAAAAFAAoAAAADAAUAAAAIAAcAAAAEAAUAAAAKAAUAAAAEAAUAAAAMAAMAAAAEAAUAAAAMAAcAAAAEAAUAAAAMAAkAAAAEAAUAAAAQAAUAAAAEAAUAAAATAAwAAAADAAUAAAACAAEAAAAEAAUAAAACAAkAAAAEAAUAAAADAAYAAAADAAUAAAAFAAIAAAADAAUAAAAGAAsAAAAEAAUAAAAHAAIAAAADAAUAAAAIAAUAAAAEAAUAAAAIAAsAAAAEAAUAAAAJAAIAAAADAAUAAAAKAAkAAAAEAAUAAAALAAQAAAADAAUAAAALAAwAAAADAAUAAAAOAAcAAAAEAAUAAAAOAA0AAAAEAAUAAAAQAAEAAAAEAAUAAAARAAYAAAADAAUAAAAUAAUAAAAEAAUAAAA=")
 
 [node name="brain_button" type="Button" parent="Brain/brain_monitor"]
 self_modulate = Color(1, 0, 1, 1)
@@ -281,16 +285,140 @@ text = "Score:"
 
 [node name="ScoreValue" type="Label" parent="."]
 layout_mode = 0
-offset_left = 622.0
-offset_top = 393.0
-offset_right = 662.0
-offset_bottom = 437.0
+offset_left = 625.0
+offset_top = 367.0
+offset_right = 671.0
+offset_bottom = 439.0
 theme_override_fonts/font = ExtResource("3_00m3x")
 theme_override_font_sizes/font_size = 42
+text = "0"
+vertical_alignment = 2
 
 [node name="ActionSpawner" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="Pause" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("18_d5udi")
+
+[node name="resume_button" type="TextureButton" parent="Pause"]
+self_modulate = Color(0.870588, 0.305882, 0.803922, 1)
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -124.0
+offset_right = 192.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("18_ntfat")
+stretch_mode = 0
+script = ExtResource("19_d5udi")
+
+[node name="Label" type="Label" parent="Pause/resume_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.980392, 0.894118, 0.0392157, 1)
+theme_override_fonts/font = ExtResource("3_00m3x")
+theme_override_font_sizes/font_size = 29
+text = "Resume"
+
+[node name="menu_button" type="TextureButton" parent="Pause"]
+self_modulate = Color(0.290196, 0.886275, 0.745098, 1)
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -28.0
+offset_right = 192.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("18_ntfat")
+stretch_mode = 0
+script = ExtResource("19_d5udi")
+
+[node name="Label" type="Label" parent="Pause/menu_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.321569, 0.431373, 0.890196, 1)
+theme_override_fonts/font = ExtResource("3_00m3x")
+theme_override_font_sizes/font_size = 29
+text = "Main Menu"
+
+[node name="exit_button" type="TextureButton" parent="Pause"]
+self_modulate = Color(0.909804, 0.917647, 0.376471, 1)
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 68.0
+offset_right = 192.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("18_ntfat")
+stretch_mode = 0
+script = ExtResource("19_d5udi")
+
+[node name="Label" type="Label" parent="Pause/exit_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.737255, 0.247059, 0.87451, 1)
+theme_override_fonts/font = ExtResource("3_00m3x")
+theme_override_font_sizes/font_size = 29
+text = "Exit"
+
+[node name="Hurry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_sqwhq")
 
 [connection signal="completed" from="Brain/brain_monitor/SubViewportContainer/SubViewport/Maze" to="." method="_on_brain_complete"]
 [connection signal="pressed" from="Brain/brain_monitor/brain_button" to="." method="_on_brain_button_pressed"]
@@ -299,3 +427,12 @@ autostart = true
 [connection signal="heart_complete" from="Heart/heart_monitor/SubViewportContainer/SubViewport/Heart" to="." method="_on_heart_heart_complete"]
 [connection signal="pressed" from="Heart/heart_monitor/heart_button" to="." method="_on_heart_button_pressed"]
 [connection signal="timeout" from="ActionSpawner" to="." method="_on_action_spawner_timeout"]
+[connection signal="mouse_entered" from="Pause/resume_button" to="Pause/resume_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause/resume_button" to="Pause/resume_button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause/resume_button" to="Pause" method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="Pause/menu_button" to="Pause/menu_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause/menu_button" to="Pause/menu_button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause/menu_button" to="Pause" method="_on_menu_button_pressed"]
+[connection signal="mouse_entered" from="Pause/exit_button" to="Pause/exit_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause/exit_button" to="Pause/exit_button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause/exit_button" to="Pause" method="_on_exit_button_pressed"]

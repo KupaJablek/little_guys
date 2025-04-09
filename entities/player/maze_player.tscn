@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4rohoe8g8kib"]
 
-[ext_resource type="Script" path="res://entities/player/maze_player.gd" id="1_ext3g"]
+[ext_resource type="Script" uid="uid://dgnfv5hkyp2fx" path="res://entities/player/maze_player.gd" id="1_ext3g"]
 [ext_resource type="Texture2D" uid="uid://wghh2c252pn0" path="res://resources/brain_tileset.png" id="2_t08lu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncif1"]

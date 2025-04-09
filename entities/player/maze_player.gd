@@ -9,8 +9,8 @@ class_name MazePlayer
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	var velocity = Vector2.ZERO # The player's movement vector.
+func _physics_process(_delta: float) -> void:
+	velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1 * speed
 	if Input.is_action_pressed("move_left"):
