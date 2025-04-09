@@ -15,7 +15,7 @@ var cells_oxygenated : int = 0
 var cell_fade_speed : int = 1.0
 var cell_rise_speed : int = 10.0
 
-signal task_complete
+signal lung_complete
 
 func _ready() -> void:
 	bg_music.play()
@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 				oxygenated_cell.self_modulate.a = 1.0 #Make the oxygenated cell visible
 				
 				if cells_oxygenated == oxygen_needed:
-					task_complete.emit()
+					lung_complete.emit()
 					cells_oxygenated = 0 #Reset cell counter
 	
 	#If oxygenated cell is visible, make it slowly disappear and rise
