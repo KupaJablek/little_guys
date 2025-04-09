@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var ladder_beneath_checker : Area2D = $ladder_beneath_checker
 @onready var ladder_behind_checker : Area2D = $ladder_behind_checker
 
-@export var speed : float = 50.0
+@export var speed : float = 75.0
 @export var climb_speed : float = 50.0
 @export var gravity : float = 10.0
 

@@ -9,7 +9,7 @@ extends Node2D
 @onready var oxygen_spawns : Array[Node] = $oxygen_spawns.get_children()
 @onready var remaining_value: Label = $Value
 
-@export var oxygen_needed : int = 3
+@export var oxygen_needed : int = 2
 
 var is_active : bool = true
 var cells_oxygenated : int = 0
