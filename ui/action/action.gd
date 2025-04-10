@@ -57,6 +57,10 @@ static var ACTIONS: Array = [
 	ActionData.new("Video Game", 90, [Type.BRAIN, Type.HEART, Type.BRAIN]),
 	ActionData.new("Heart Attack", 75, [Type.HEART, Type.HEART, Type.HEART]),
 	ActionData.new("Mountain Hike", 150, [Type.LUNGS, Type.LUNGS, Type.LUNGS]),
+	ActionData.new("Exam", 120, [Type.BRAIN, Type.BRAIN, Type.BRAIN]),
+	ActionData.new("Swim", 150, [Type.LUNGS, Type.HEART, Type.LUNGS]),
+	ActionData.new("Rock Climb", 120, [Type.BRAIN, Type.BRAIN, Type.HEART]),
+	ActionData.new("Skydive", 90, [Type.HEART, Type.HEART, Type.BRAIN]),
 ]
 
 
